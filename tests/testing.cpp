@@ -12,13 +12,14 @@ int main() {
     float3 b = {3,2,1};
     float3 c = a * b;
 
-    std::cout << to_string(c) << "\n";
+    // std::cout << to_string(c) << "\n";
 
     float3x3 m = {
-        1,1,0,
-        0,1,0,
-        0,0,1
+        34,5,0,
+        0,2,0,
+        0,0,3
     };
 
     std::cout << to_string(m) << "\n";
+    std::cout << det(m) << "\n";
 }
