@@ -21,5 +21,5 @@ int main() {
     };
 
     std::cout << to_string(m) << "\n";
-    std::cout << det(m) << "\n";
+    std::cout << to_string(inverse(m)) << "\n";
 }
