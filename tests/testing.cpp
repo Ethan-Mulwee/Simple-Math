@@ -1,7 +1,6 @@
 // temporary testing file implement proper testing with cmake later
 
-#include "vector.hpp"
-#include "matrix.hpp"
+#include "smath.hpp"
 #include "to_string.hpp"
 #include <iostream>
 
@@ -14,12 +13,15 @@ int main() {
 
     // std::cout << to_string(c) << "\n";
 
-    float3x3 m = {
-        34,5,0,
-        0,2,0,
-        0,0,3
+    float4x4 m = {
+        34,5,0,1,
+        0,2,0,2,
+        0,0,3,3,
+        0,0,0,1
     };
+
 
     std::cout << to_string(m) << "\n";
     std::cout << to_string(inverse(m)) << "\n";
+
 }
