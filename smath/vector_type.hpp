@@ -6,7 +6,7 @@
 
 namespace smath {
 
-    struct float2 {
+    struct vector2 {
         float x,y;
     
         inline float length() const {
@@ -23,39 +23,39 @@ namespace smath {
         }
     };
     
-    inline float2 operator+(const float2 &a, const float2 &b) {
-        return float2{a.x+b.x, a.y+b.y};
+    inline vector2 operator+(const vector2 &a, const vector2 &b) {
+        return vector2{a.x+b.x, a.y+b.y};
     }
 
-    inline float2 operator-(const float2 &a, const float2 &b) {
-        return float2{a.x-b.x, a.y-b.y};
+    inline vector2 operator-(const vector2 &a, const vector2 &b) {
+        return vector2{a.x-b.x, a.y-b.y};
     }
 
     // Component-wise multipication of two vectors
-    inline float2 operator*(const float2 &a, const float2 &b) {
-        return float2{a.x*b.x, a.y*b.y};
+    inline vector2 operator*(const vector2 &a, const vector2 &b) {
+        return vector2{a.x*b.x, a.y*b.y};
     }
 
     // Scale vector by a scalar
-    inline float2 operator*(const float2 &v, const float s) {
-        return float2{v.x*s, v.y*s};
+    inline vector2 operator*(const vector2 &v, const float s) {
+        return vector2{v.x*s, v.y*s};
     }
 
     // Scale vector by a scalar
-    inline float2 operator*(const float s, const float2 &v) {
-        return float2{v.x*s, v.y*s};
+    inline vector2 operator*(const float s, const vector2 &v) {
+        return vector2{v.x*s, v.y*s};
     }
 
 
-    inline float2 operator/(const float2 &a, const float2 &b) {
-        return float2{a.x/b.x, a.y/b.y};
+    inline vector2 operator/(const vector2 &a, const vector2 &b) {
+        return vector2{a.x/b.x, a.y/b.y};
     }
 
-    inline float dot(const float2 &a, const float2 &b) {
+    inline float dot(const vector2 &a, const vector2 &b) {
         return a.x*b.x+a.y*b.y;
     }
 
-    struct float3 {
+    struct vector3 {
         float x,y,z;
     
         inline float length() const {
@@ -72,51 +72,51 @@ namespace smath {
         }
     };
     
-    inline float3 operator+(const float3 &a, const float3 &b) {
-        return float3{a.x+b.x, a.y+b.y, a.z+b.z};
+    inline vector3 operator+(const vector3 &a, const vector3 &b) {
+        return vector3{a.x+b.x, a.y+b.y, a.z+b.z};
     }
 
-    inline float3 operator-(const float3 &a, const float3 &b) {
-        return float3{a.x-b.x, a.y-b.y, a.z-b.z};
+    inline vector3 operator-(const vector3 &a, const vector3 &b) {
+        return vector3{a.x-b.x, a.y-b.y, a.z-b.z};
     }
 
     // Component-wise multipication of two vectors
-    inline float3 operator*(const float3 &a, const float3 &b) {
-        return float3{a.x*b.x, a.y*b.y, a.z*b.z};
+    inline vector3 operator*(const vector3 &a, const vector3 &b) {
+        return vector3{a.x*b.x, a.y*b.y, a.z*b.z};
     }
 
     // Scale vector by a scalar
-    inline float3 operator*(const float3 &v, const float s) {
-        return float3{v.x*s, v.y*s, v.z*s};
+    inline vector3 operator*(const vector3 &v, const float s) {
+        return vector3{v.x*s, v.y*s, v.z*s};
     }
 
     // Scale vector by a scalar
-    inline float3 operator*(const float s, const float3 &v) {
-        return float3{v.x*s, v.y*s, v.z*s};
+    inline vector3 operator*(const float s, const vector3 &v) {
+        return vector3{v.x*s, v.y*s, v.z*s};
     }
 
 
-    inline float3 operator/(const float3 &a, const float3 &b) {
-        return float3{a.x/b.x, a.y/b.y, a.z/b.z};
+    inline vector3 operator/(const vector3 &a, const vector3 &b) {
+        return vector3{a.x/b.x, a.y/b.y, a.z/b.z};
     }
 
-    inline float dot(const float3 &a, const float3 &b) {
+    inline float dot(const vector3 &a, const vector3 &b) {
         return a.x*b.x+a.y*b.y+a.z*b.z;
     }
 
-    inline float3 cross(const float3 &a, const float3 &b) {
-        return float3{
+    inline vector3 cross(const vector3 &a, const vector3 &b) {
+        return vector3{
             a.y * b.z - a.z * b.y,
             a.z * b.x - a.x * b.z, 
             a.x * b.y - a.y * b.x
         };
     }
 
-    inline float3 project(const float3 &a, const float3 &b) {
+    inline vector3 project(const vector3 &a, const vector3 &b) {
         return (dot(a,b)/dot(b,b))*b;
     }
 
-    struct float4 {
+    struct vector4 {
         float x, y, z, w;
 
         inline float length() const {
@@ -133,35 +133,35 @@ namespace smath {
         }
     };
 
-    inline float4 operator+(const float4 &a, const float4 &b) {
-        return float4{a.x+b.x, a.y+b.y, a.z+b.z, a.w+b.w};
+    inline vector4 operator+(const vector4 &a, const vector4 &b) {
+        return vector4{a.x+b.x, a.y+b.y, a.z+b.z, a.w+b.w};
     }
 
-    inline float4 operator-(const float4 &a, const float4 &b) {
-        return float4{a.x-b.x, a.y-b.y, a.z-b.z, a.w-b.w};
+    inline vector4 operator-(const vector4 &a, const vector4 &b) {
+        return vector4{a.x-b.x, a.y-b.y, a.z-b.z, a.w-b.w};
     }
 
     // Component-wise multipication of two vectors
-    inline float4 operator*(const float4 &a, const float4 &b) {
-        return float4{a.x*b.x, a.y*b.y, a.z*b.z, a.w*b.w};
+    inline vector4 operator*(const vector4 &a, const vector4 &b) {
+        return vector4{a.x*b.x, a.y*b.y, a.z*b.z, a.w*b.w};
     }
 
     // Scale vector by a scalar
-    inline float4 operator*(const float4 &v, const float s) {
-        return float4{v.x*s, v.y*s, v.z*s, v.w*s};
+    inline vector4 operator*(const vector4 &v, const float s) {
+        return vector4{v.x*s, v.y*s, v.z*s, v.w*s};
     }
 
     // Scale vector by a scalar
-    inline float4 operator*(const float s, const float4 &v) {
-        return float4{v.x*s, v.y*s, v.z*s, v.w*s};
+    inline vector4 operator*(const float s, const vector4 &v) {
+        return vector4{v.x*s, v.y*s, v.z*s, v.w*s};
     }
 
 
-    inline float4 operator/(const float4 &a, const float4 &b) {
-        return float4{a.x/b.x, a.y/b.y, a.z/b.z, a.w/b.w};
+    inline vector4 operator/(const vector4 &a, const vector4 &b) {
+        return vector4{a.x/b.x, a.y/b.y, a.z/b.z, a.w/b.w};
     }
 
-    inline float dot(const float4 &a, const float4 &b) {
+    inline float dot(const vector4 &a, const vector4 &b) {
         return a.x*b.x+a.y*b.y+a.z*b.z+a.w*b.w;
     }
 

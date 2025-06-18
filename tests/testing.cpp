@@ -7,13 +7,13 @@
 int main() {
     using namespace smath;
 
-    float3 a = {1,2,3};
-    float3 b = {3,2,1};
-    float3 c = a * b;
+    vector3 a = {1,2,3};
+    vector3 b = {3,2,1};
+    vector3 c = a * b;
 
     // std::cout << to_string(c) << "\n";
 
-    float4x4 m = {
+    matrix4x4 m = {
         34,5,0,1,
         0,2,0,2,
         0,0,3,3,

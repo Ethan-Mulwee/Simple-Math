@@ -13,10 +13,10 @@ namespace smath{
             return acos(w)*2;
         }
 
-        float3 axis() const {
+        vector3 axis() const {
             float angle = (*this).angle();
             float s = sin(angle/2);
-            return float3{x/s,y/s,z/s};
+            return vector3{x/s,y/s,z/s};
         }
 
         float length() const {

@@ -4,7 +4,7 @@
 #include <cstddef>
 
 namespace smath {
-    struct float3x3 {
+    struct matrix3x3 {
         float data[3][3];
         
         inline float* operator[](const size_t i) {
@@ -16,7 +16,7 @@ namespace smath {
         }
     };
 
-    struct float4x4 {
+    struct matrix4x4 {
         float data[4][4];
 
         inline float* operator[](const size_t i) {

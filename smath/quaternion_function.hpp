@@ -25,6 +25,10 @@ namespace smath{
     inline quaternion quaternion_add_vector() {
         
     }
+
+    inline vector3 quaternion_rotate_vector(const quaternion &q, const vector3 &v) {
+
+    }
 }
 
 #endif
