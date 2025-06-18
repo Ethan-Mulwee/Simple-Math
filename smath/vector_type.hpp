@@ -1,5 +1,5 @@
-#ifndef SIMPLE_VECTOR
-#define SIMPLE_VECTOR
+#ifndef SMATH_VECTOR
+#define SMATH_VECTOR
 
 #include <cmath>
 

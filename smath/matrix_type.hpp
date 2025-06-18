@@ -1,5 +1,5 @@
-#ifndef SIMPLE_MATRIX
-#define SIMPLE_MATRIX
+#ifndef SMATH_MATRIX
+#define SMATH_MATRIX
 
 #include <cstddef>
 

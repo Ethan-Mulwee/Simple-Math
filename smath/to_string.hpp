@@ -1,9 +1,9 @@
-#ifndef SIMPLE_TO_STRING
-#define SIMPLE_TO_STRING
+#ifndef SMATH_TO_STRING
+#define SMATH_TO_STRING
 
 #include <string>
-#include "vector_types.hpp"
-#include "matrix_types.hpp"
+#include "vector_type.hpp"
+#include "matrix_type.hpp"
 
 namespace smath {
     std::string to_string(const float3 &v) {

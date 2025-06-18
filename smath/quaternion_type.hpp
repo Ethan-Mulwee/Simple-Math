@@ -1,0 +1,33 @@
+#ifndef SMATH_QUATERNION_TYPE
+#define SMATH_QUATERNION_TYPE
+
+#include <cmath>
+
+#include "vector_type.hpp"
+
+namespace smath{
+    struct quaternion {
+        float x, y, z, w;
+
+        float angle() const {
+            return acos(w)*2;
+        }
+
+        float3 axis() const {
+            float angle = (*this).angle();
+            float s = sin(angle/2);
+            return float3{x/s,y/s,z/s};
+        }
+
+        float length() const {
+            return sqrt(x*x+y*y+z*z+w*w);
+        }
+
+        void normalize() {
+            float factor = 1.0f/(*this).length();
+            x *= factor; y *= factor; z *= factor; w *= factor;
+        }
+    };
+}
+
+#endif

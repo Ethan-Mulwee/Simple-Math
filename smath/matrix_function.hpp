@@ -1,9 +1,9 @@
-#ifndef SIMPLE_MATRIX_FUNCTIONS
-#define SIMPLE_MATRIX_FUNCTIONS
+#ifndef SMATH_MATRIX_FUNCTION
+#define SMATH_MATRIX_FUNCTION
 
 #include <cmath>
-#include "matrix_types.hpp"
-#include "vector_types.hpp"
+#include "matrix_type.hpp"
+#include "vector_type.hpp"
 
 namespace smath {
     /* -------------------------------------------------------------------------- */
@@ -19,13 +19,13 @@ namespace smath {
         };
     }
     
-    void operator*=(float3x3 &m, const float s) {
+    inline void operator*=(float3x3 &m, const float s) {
         m[0][0] *= s; m[0][1] *= s; m[0][2] *= s;
         m[1][0] *= s; m[1][1] *= s; m[1][2] *= s;
         m[2][0] *= s; m[2][1] *= s; m[2][2] *= s;
     }
     
-    float3x3 operator*(const float3x3 &m, const float s) {
+    inline float3x3 operator*(const float3x3 &m, const float s) {
         return {
             m[0][0] * s, m[0][1] * s, m[0][2] * s,
             m[1][0] * s, m[1][1] * s, m[1][2] * s,
@@ -49,7 +49,8 @@ namespace smath {
         float OneOverDeterminant = 1.0f / (
             +m[0][0] * (m[1][1] * m[2][2] - m[2][1] * m[1][2])
             - m[1][0] * (m[0][1] * m[2][2] - m[2][1] * m[0][2])
-            + m[2][0] * (m[0][1] * m[1][2] - m[1][1] * m[0][2]));
+            + m[2][0] * (m[0][1] * m[1][2] - m[1][1] * m[0][2])
+        );
             
         float3x3 inverse;
         inverse[0][0] = +(m[1][1] * m[2][2] - m[2][1] * m[1][2]);
@@ -71,7 +72,7 @@ namespace smath {
         return float3{m[0][i], m[1][i], m[2][i]};
     }
 
-    float3 float3x3_transform_float3(const float3x3 &m, const float3 &v) {
+    inline float3 float3x3_transform_float3(const float3x3 &m, const float3 &v) {
         float3 x = v.x*float3_from_float3x3(m,0);
         float3 y = v.y*float3_from_float3x3(m,1);
         float3 z = v.z*float3_from_float3x3(m,2);
@@ -102,6 +103,7 @@ namespace smath {
             m[0][0]*m[1][1]*m[2][2];
     }    
     
+    // TODO: this assumes the bottom row is 0, 0, 0, 1 figure out what you're going to do about this
     inline float4x4 inverse(const float4x4 &m) {
         float factor = 1.0f / determinant(m);
 
