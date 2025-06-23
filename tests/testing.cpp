@@ -22,6 +22,6 @@ int main() {
 
 
     std::cout << to_string(m) << "\n";
-    std::cout << to_string(inverse(m)) << "\n";
+    std::cout << to_string(transpose(m)) << "\n";
 
 }

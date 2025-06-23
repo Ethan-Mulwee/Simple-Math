@@ -7,7 +7,7 @@
 
 namespace smath {
     /* -------------------------------------------------------------------------- */
-    /*                                  float3x3                                  */
+    /*                                 matrix3x3                                  */
     /* -------------------------------------------------------------------------- */
 
     // Construct matrix from column vectors
@@ -42,6 +42,14 @@ namespace smath {
         float t3 = m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]);
         
         return t1-t2-t3;
+    }
+
+    inline matrix3x3 transpose(const matrix3x3 &m) {
+        return {
+            m[0][0], m[1][0], m[2][0],
+            m[0][1], m[1][1], m[2][1],
+            m[0][2], m[1][2], m[2][2],
+        };
     }
     
     inline matrix3x3 inverse(const matrix3x3 &m) {
@@ -80,7 +88,7 @@ namespace smath {
     }
 
     /* -------------------------------------------------------------------------- */
-    /*                                  float4x4                                  */
+    /*                                 matrix4x4                                  */
     /* -------------------------------------------------------------------------- */
 
 
@@ -102,6 +110,15 @@ namespace smath {
             m[1][0]*m[0][1]*m[2][2]+
             m[0][0]*m[1][1]*m[2][2];
     }    
+
+    inline matrix4x4 transpose(const matrix4x4 &m) {
+        return {
+            m[0][0], m[1][0], m[2][0], m[3][0],
+            m[0][1], m[1][1], m[2][1], m[3][1],
+            m[0][2], m[1][2], m[2][2], m[3][2],
+            m[0][3], m[1][3], m[2][3], m[3][3],
+        };
+    }
     
     // this assumes the bottom row is 0, 0, 0, 1
     inline matrix4x4 invert_transform(const matrix4x4 &m) {
