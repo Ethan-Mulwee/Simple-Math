@@ -185,6 +185,19 @@ namespace smath {
 
         return x+y+z+w;
     }
+
+    inline matrix4x4 matrix4x4_from_perspective(float fovy, float aspect, float zNear, float zFar) {
+        const float tanHalfFovy = tan(fovy/2.0f);
+
+        matrix4x4 m = {0};
+
+        m[0][0] = 1.0f / (aspect * tanHalfFovy);
+        m[1][1] = 1.0f / tanHalfFovy;
+        m[2][2] = - (zFar + zNear) / (zFar - zNear);
+        m[3][2] = 1.0f;
+        m[2][3] = (2.0f * zFar * zNear) / (zFar - zNear);
+        return m;
+    }
 }
 
 #endif

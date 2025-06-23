@@ -20,8 +20,9 @@ int main() {
         0,0,0,1
     };
 
+    matrix4x4 perspectiveMatrix = matrix4x4_from_perspective(45.0f, 1.0f, 0.1f, 100.0f);
 
-    std::cout << to_string(m) << "\n";
-    std::cout << to_string(transpose(m)) << "\n";
+
+    std::cout << to_string(perspectiveMatrix) << "\n";
 
 }
