@@ -9,6 +9,8 @@ namespace smath {
     struct euler_xyz {
         float x, y, z;
     };
+
+    
 }
 
 #endif

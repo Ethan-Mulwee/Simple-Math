@@ -1,9 +1,7 @@
 #ifndef SMATH
 #define SMATH
 
-#include "matrix_type.hpp"
-#include "vector_type.hpp"
-
-#include "matrix_function.hpp"
+#include "smath_types.hpp"
+#include "smath_functions.hpp"
 
 #endif

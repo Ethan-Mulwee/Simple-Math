@@ -104,13 +104,15 @@ namespace smath {
         return m;
     }
 
-    inline matrix3x3 matrix3x3_from_euler(const euler_xyz &e) {
+    // TODO:
+    // inline matrix3x3 matrix3x3_from_euler(const euler_xyz &e) {
 
-    }
+    // }
 
-    inline matrix3x3 matrix3x3_change_basis(const matrix3x3 &m, const matrix3x3 &b) {
+    // TODO:
+    // inline matrix3x3 matrix3x3_change_basis(const matrix3x3 &m, const matrix3x3 &b) {
         
-    } 
+    // } 
 
     /* -------------------------------------------------------------------------- */
     /*                                 matrix4x4                                  */
@@ -229,12 +231,18 @@ namespace smath {
     }
 
     inline matrix4x4 matrix4x4_from_translation(const vector3 &v) {
-
+        return matrix4x4{
+            1, 0, 0, v.x,
+            0, 1, 0, v.y,
+            0, 0, 1, v.z,
+            0, 0, 0, 1
+        };
     }
 
-    inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
+    // TODO:
+    // inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
 
-    }
+    // }
 }
 
 #endif

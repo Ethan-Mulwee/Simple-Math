@@ -49,9 +49,10 @@ namespace smath{
         };
     }
 
-    inline quaternion quaternion_from_matrix3x3(const matrix3x3 &m) {
+    // TODO:
+    // inline quaternion quaternion_from_matrix3x3(const matrix3x3 &m) {
 
-    }
+    // }
 
     // reinterpet a vector3 as a quaternion TODO: intution
     inline quaternion quaternion_from_vector3(const vector3 &v) {
