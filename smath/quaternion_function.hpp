@@ -3,8 +3,7 @@
 
 #include <cmath>
 
-#include "quaternion_type.hpp"
-#include "matrix_type.hpp"
+#include "smath_types.hpp"
 
 namespace smath{
     // Multiply quaternions
@@ -15,6 +14,11 @@ namespace smath{
             q.w*p.y-q.x*p.z+q.y*p.w+q.z*p.x,
             q.w*p.z+q.x*p.y-q.y*p.x+q.z*p.w
         };
+    }
+
+    // Add quaternions
+    inline quaternion operator+(const quaternion &q, const quaternion &p) {
+        return quaternion{q.x + p.x, q.y + p.y, q.z + p.z, q.w + p.w};
     }
 
     // Multiply quaternion by scalar
@@ -37,7 +41,7 @@ namespace smath{
         });
     }
 
-    inline vector3 quaternion_rotate_vector(const quaternion &q, const vector3 &v) {
+    inline vector3 quaternion_transform_vector(const quaternion &q, const vector3 &v) {
         return vector3{
             v.x*(q.x*q.x-q.y*q.y-q.z*q.z+q.w*q.w)+v.y*(2*q.x*q.y-2*q.w*q.z)+v.z*(2*q.x*q.z+2*q.w*q.y),
             v.x*(2*q.w*q.z+2*q.x*q.y)+v.y*(q.w*q.w-q.x*q.x+q.y*q.y-q.z*q.z)+v.z*(2*q.y*q.z-2*q.w*q.x),
@@ -45,22 +49,13 @@ namespace smath{
         };
     }
 
-    inline matrix3x3 matrix3x3_from_quaternion(const quaternion &q) {
-        matrix3x3 m;
-        // i hat
-        m[0][0] = q.x*q.x-q.y*q.y-q.z*q.z+q.w*q.w;
-        m[1][0] = 2*q.w*q.z+2*q.x*q.y;
-        m[2][0] = 2*q.x*q.z-2*q.w*q.y;
-        // j hat
-        m[0][1] = 2*q.x*q.y-2*q.w*q.z;
-        m[1][1] = q.w*q.w-q.x*q.x+q.y*q.y-q.z*q.z;
-        m[2][1] = 2*q.w*q.x+2*q.y*q.z;
-        // k hat
-        m[0][2] = 2*q.x*q.z+2*q.w*q.y;
-        m[1][2] = 2*q.y*q.z-2*q.w*q.x;
-        m[2][2] = q.w*q.w-q.x*q.x-q.y*q.y+q.z*q.z;
-    
-        return m;
+    inline quaternion quaternion_from_matrix3x3(const matrix3x3 &m) {
+
+    }
+
+    // reinterpet a vector3 as a quaternion TODO: intution
+    inline quaternion quaternion_from_vector3(const vector3 &v) {
+        return quaternion{v.x, v.y, v.z, 0};
     }
 }
 

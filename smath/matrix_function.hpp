@@ -2,8 +2,7 @@
 #define SMATH_MATRIX_FUNCTION
 
 #include <cmath>
-#include "matrix_type.hpp"
-#include "vector_type.hpp"
+#include "smath_types.hpp"
 
 namespace smath {
     /* -------------------------------------------------------------------------- */
@@ -86,6 +85,32 @@ namespace smath {
         vector3 z = v.z*vector3_from_matrix3x3(m,2);
         return x+y+z;
     }
+
+    inline matrix3x3 matrix3x3_from_quaternion(const quaternion &q) {
+        matrix3x3 m;
+        // i hat
+        m[0][0] = q.x*q.x-q.y*q.y-q.z*q.z+q.w*q.w;
+        m[1][0] = 2*q.w*q.z+2*q.x*q.y;
+        m[2][0] = 2*q.x*q.z-2*q.w*q.y;
+        // j hat
+        m[0][1] = 2*q.x*q.y-2*q.w*q.z;
+        m[1][1] = q.w*q.w-q.x*q.x+q.y*q.y-q.z*q.z;
+        m[2][1] = 2*q.w*q.x+2*q.y*q.z;
+        // k hat
+        m[0][2] = 2*q.x*q.z+2*q.w*q.y;
+        m[1][2] = 2*q.y*q.z-2*q.w*q.x;
+        m[2][2] = q.w*q.w-q.x*q.x-q.y*q.y+q.z*q.z;
+    
+        return m;
+    }
+
+    inline matrix3x3 matrix3x3_from_euler(const euler_xyz &e) {
+
+    }
+
+    inline matrix3x3 matrix3x3_change_basis(const matrix3x3 &m, const matrix3x3 &b) {
+        
+    } 
 
     /* -------------------------------------------------------------------------- */
     /*                                 matrix4x4                                  */
@@ -172,12 +197,16 @@ namespace smath {
         return matrix4x4_from_columns(x,y,z,w);
     }
 
-        // Get column vector
+    // Get column vector
     inline vector3 vector3_from_matrix4x4(const matrix4x4 &m, const size_t i) {
         return vector3{m[0][i], m[1][i], m[2][i]};
     }
 
-    inline vector3 float4x4_transform_float3(const matrix4x4 &m, const vector3 &v) {
+    inline vector4 vector4_from_matrix4x4(const matrix4x4 &m, const size_t i) {
+        return vector4{m[0][i], m[1][i], m[2][i], m[3][i]};
+    }
+
+    inline vector3 matrix4x4_transform_vector3(const matrix4x4 &m, const vector3 &v) {
         vector3 x = v.x*vector3_from_matrix4x4(m,0);
         vector3 y = v.y*vector3_from_matrix4x4(m,1);
         vector3 z = v.z*vector3_from_matrix4x4(m,2);
@@ -197,6 +226,14 @@ namespace smath {
         m[3][2] = 1.0f;
         m[2][3] = (2.0f * zFar * zNear) / (zFar - zNear);
         return m;
+    }
+
+    inline matrix4x4 matrix4x4_from_translation(const vector3 &v) {
+
+    }
+
+    inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
+
     }
 }
 
