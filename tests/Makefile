@@ -4,13 +4,13 @@ all:
 	$(MAKE) matrix
 
 vector:
-	g++ vector.cpp -o vector.out -I../smath -O2
-	./vector.out
+	g++ vector.cpp -o out/vector.out -I../smath -O2
+	./out/vector.out
 
 matrix:
-	g++ matrix.cpp -o matrix.out -I../smath -O2
-	./matrix.out
+	g++ matrix.cpp -o out/matrix.out -I../smath -O2
+	./out/matrix.out
 
 clean:
-	rm matrix.out
-	rm vector.out
+	rm out/matrix.out
+	rm out/vector.out

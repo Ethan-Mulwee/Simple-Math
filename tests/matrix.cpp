@@ -1,11 +1,9 @@
-// g++ matrix.cpp -I../smath
-
 #include "smath.hpp"
 #include "to_string.hpp"
 #include <iostream>
 
 int main() {
-    
+
     using namespace smath;
 
     std::cout << "\n MATRIX TESTING: \n";

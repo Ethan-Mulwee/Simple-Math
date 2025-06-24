@@ -28,7 +28,7 @@ these functions follow the convention `firstArg_operation_secondArg(firstArg, se
 vector3 quaternion_transform_vector(const quaternion &q, const vector3 &v)
 ```
 
-# Debugging/Printing
+# Printing
 The header "to_string.hpp" is included to add simple functionality for printing
 ```cpp
     #include <iostream>
@@ -43,5 +43,8 @@ The header "to_string.hpp" is included to add simple functionality for printing
 
     // outputs: "vector: (1.000000,2.000000,3.000000)"
 ```
+
+# Testing
+basic tests and examples for all the library functionally are included in `tests/` along with a makefile for every use
 
 
