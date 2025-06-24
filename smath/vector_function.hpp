@@ -13,6 +13,11 @@ namespace smath {
         return vector2{a.x+b.x, a.y+b.y};
     }
 
+    inline void operator+=(vector2 &a, const vector2 &b) {
+        a.x += b.x;
+        a.y += b.y;
+    }
+
     inline vector2 operator-(const vector2 &a, const vector2 &b) {
         return vector2{a.x-b.x, a.y-b.y};
     }
@@ -47,6 +52,12 @@ namespace smath {
 
     inline vector3 operator+(const vector3 &a, const vector3 &b) {
         return vector3{a.x+b.x, a.y+b.y, a.z+b.z};
+    }
+
+    inline void operator+=(vector3 &a, const vector3 &b) {
+        a.x += b.x;
+        a.y += b.y;
+        a.z += b.z;
     }
 
     inline vector3 operator-(const vector3 &a, const vector3 &b) {
@@ -99,6 +110,13 @@ namespace smath {
 
     inline vector4 operator+(const vector4 &a, const vector4 &b) {
         return vector4{a.x+b.x, a.y+b.y, a.z+b.z, a.w+b.w};
+    }
+
+    inline void operator+=(vector4 &a, const vector4 &b) {
+        a.x += b.x;
+        a.y += b.y;
+        a.z += b.z;
+        a.w += b.w;
     }
 
     inline vector4 operator-(const vector4 &a, const vector4 &b) {
