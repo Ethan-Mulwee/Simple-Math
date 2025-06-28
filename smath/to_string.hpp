@@ -31,6 +31,37 @@ namespace smath {
             "|" + std::to_string(m[3][0]) + ", " + std::to_string(m[3][1]) + ", " + std::to_string(m[3][2]) + ", " + std::to_string(m[3][3]) + "|";
     }
 
+    std::string to_string_pretty(const matrix4x4 &m) {
+        unsigned longest = 0;
+
+        std::string strings[4][4];
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                unsigned length = std::to_string(m[i][j]).length();
+                if (length > longest) {
+                    longest = length;
+                }
+            }
+        }
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                std::string str = std::to_string(m[i][j]);
+                while (str.length() < longest) {
+                    str += "0";
+                }
+                strings[i][j] = str;
+            }
+        }
+
+        return
+            "|" + strings[0][0] + ", " + strings[0][1] + ", " + strings[0][2] + ", " + strings[0][3] + "| \n" +
+            "|" + strings[1][0] + ", " + strings[1][1] + ", " + strings[1][2] + ", " + strings[1][3] + "| \n" +
+            "|" + strings[2][0] + ", " + strings[2][1] + ", " + strings[2][2] + ", " + strings[2][3] + "| \n" +
+            "|" + strings[3][0] + ", " + strings[3][1] + ", " + strings[3][2] + ", " + strings[3][3] + "|";
+    }
+
     std::string to_string(const quaternion &q) {
         return "(" + std::to_string(q.x) + ", " + std::to_string(q.y) + ", " + std::to_string(q.z) + ", " + std::to_string(q.w) + ")";
     }

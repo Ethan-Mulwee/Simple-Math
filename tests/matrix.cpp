@@ -6,8 +6,9 @@ int main() {
 
     using namespace smath;
 
-    std::cout << "\n MATRIX TESTING: \n";
+    std::cout << "\n MATRIX TESTING: \n \n";
 
+    std::cout << "-------------------Transformation Matrix Creation----------------------- \n \n";
     
     std::cout << "Perspective Matrix: FOVY=45 ASPECT=1 NEAR=0.1 FAR=100.0 \n";
     matrix4x4 perspectiveMatrix = matrix4x4_from_perspective(45.0f, 1.0f, 0.1f, 100.0f);
@@ -102,7 +103,7 @@ int main() {
         9,10,11,12,
         13,14,15,16
     };
-    std::cout << to_string(matrix4x4A) << "\n \n";
+    std::cout << to_string_pretty(matrix4x4A) << "\n \n";
 
     std::cout << "Matrix4x4 B: \n";
     matrix4x4 matrix4x4B = {
@@ -111,8 +112,8 @@ int main() {
         3,7,11,15,
         4,8,12,16
     };
-    std::cout << to_string(matrix4x4B) << "\n \n";
+    std::cout << to_string_pretty(matrix4x4B) << "\n \n";
 
     std::cout << "Matrix4x4 A * Matrix4x4 B: \n";
-    std::cout << to_string(matrix4x4A*matrix4x4B) << "\n \n";
+    std::cout << to_string_pretty(matrix4x4A*matrix4x4B) << "\n \n";
 }
