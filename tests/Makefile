@@ -1,4 +1,8 @@
-all:
+.SILENT:
+
+MAKEFLAGS += --no-print-directory
+
+all: 
 	@echo running all tests
 	$(MAKE) vector
 	$(MAKE) matrix
