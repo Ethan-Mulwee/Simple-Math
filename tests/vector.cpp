@@ -1,5 +1,3 @@
-// g++ matrix.cpp -I../smath
-
 #include "smath.hpp"
 #include "to_string.hpp"
 #include <iostream>
