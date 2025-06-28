@@ -6,6 +6,35 @@
 #include "vector_function.hpp"
 
 namespace smath {
+
+    /* -------------------------------------------------------------------------- */
+    /*                                  matrix2x2                                 */
+    /* -------------------------------------------------------------------------- */
+
+    inline matrix2x2 matrix2x2_from_columns(const vector2 &x, const vector2 &y);
+
+    inline void operator*=(matrix2x2 &m, const float s);
+
+    inline matrix2x2 operator*(const matrix2x2 &m, const float s);
+
+    inline matrix2x2 operator*(const float s, const matrix2x2 &m);
+
+    inline matrix2x2 operator*(const matrix2x2 &a, const matrix2x2 &b);
+    
+    inline float determinant(const matrix2x2 &m);
+
+    inline matrix2x2 transpose(const matrix2x2 &m);
+
+    inline matrix2x2 inverse(const matrix2x2 &m);
+
+    inline vector2 vector2_from_matrix2x2(const matrix2x2 &m, const size_t i);
+
+    inline vector2 matrix2x2_transform_vector2(const matrix2x2 &m, const vector2 &v);
+
+    inline matrix2x2 matrix2x2_change_basis(const matrix2x2 &m, const matrix2x2 &b);
+
+    inline matrix2x2 matrix2x2_from_matrix2x2(const matrix2x2 &m);
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix3x3                                  */
     /* -------------------------------------------------------------------------- */
@@ -35,7 +64,7 @@ namespace smath {
     inline matrix3x3 matrix3x3_from_euler(const euler_xyz &e);
 
     // Simple change of basis function, NOTE: this uses a inverse which could be optimzied away as a tranpose in the case of a rotation matrix
-    inline matrix3x3 matrix3x3_change_basis(const matrix3x3 &m, const matrix3x3 &b);
+    inline matrix3x3 matrix3x3_change_basis(const matrix3x3 &matrix, const matrix3x3 &changeOfBasisMatrix);
 
     // for change of basis when the basis is a rotation matrix and so the inverse can be optimized to isntead be a simple tranpose
     inline matrix3x3 matrix3x3_change_basis_rotation(const matrix3x3 &m, const matrix3x3 &b);

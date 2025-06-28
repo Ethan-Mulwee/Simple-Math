@@ -8,6 +8,72 @@
 #include "vector_function.hpp"
 
 namespace smath {
+
+    /* -------------------------------------------------------------------------- */
+    /*                                  matrix2x2                                 */
+    /* -------------------------------------------------------------------------- */
+
+    matrix2x2 matrix2x2_from_columns(const vector2 &x, const vector2 &y) {
+        return matrix2x2{
+            x.x, y.x,
+            x.y, y.y
+        };
+    }
+
+    void operator*=(matrix2x2 &m, const float s) {
+        m[0][0] *= s; m[0][1] *= s;
+        m[1][0] *= s; m[1][1] *= s;
+    }
+
+    matrix2x2 operator*(const matrix2x2 &m, const float s) {
+        return matrix2x2{
+            m[0][0] * s, m[0][1] * s,
+            m[1][0] * s, m[1][1] * s
+        };
+    }
+
+    matrix2x2 operator*(const float s, const matrix2x2 &m) {
+        return matrix2x2{
+            m[0][0] * s, m[0][1] * s,
+            m[1][0] * s, m[1][1] * s
+        };
+    }
+
+    matrix2x2 operator*(const matrix2x2 &a, const matrix2x2 &b) {
+        vector2 ihat = vector2_from_matrix2x2(b, 0);
+        vector2 jhat = vector2_from_matrix2x2(b, 1);
+
+        ihat = matrix2x2_transform_vector2(a, ihat);
+        jhat = matrix2x2_transform_vector2(a, jhat);
+
+        return matrix2x2_from_columns(ihat, jhat);
+    }
+
+    matrix2x2 inverse(const matrix2x2 &m) {
+        float factor = 1.0f/(m[0][0]*m[1][1]-m[0][1]*m[1][0]);
+
+        return factor * matrix2x2{
+            m[1][1], -m[0][1],
+            -m[1][0], m[0][0]
+        };
+    }
+
+    vector2 vector2_from_matrix2x2(const matrix2x2 &m, const size_t i)
+    {
+        return vector2{m[0][i], m[1][i]};
+    }
+
+    vector2 matrix2x2_transform_vector2(const matrix2x2 &m, const vector2 &v) {
+        vector2 x = v.x * vector2_from_matrix2x2(m,0);
+        vector2 y = v.y * vector2_from_matrix2x2(m,1);
+
+        return x + y;
+    }
+
+    matrix2x2 matrix2x2_change_basis(const matrix2x2 &m, const matrix2x2 &b) {
+        return inverse(b)*m*b;
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix3x3                                  */
     /* -------------------------------------------------------------------------- */
@@ -124,13 +190,9 @@ namespace smath {
 
     // }
 
-    // TODO:
-    // inline matrix3x3 matrix3x3_change_basis(const matrix3x3 &m, const matrix3x3 &b) {
-        
-    // }
-
-    matrix3x3 matrix3x3_change_basis(const matrix3x3 &m, const matrix3x3 &b) {
-        return inverse(b)*m*b;
+    // returns matrix in a different basis
+    matrix3x3 matrix3x3_change_basis(const matrix3x3 &matrix, const matrix3x3 &changeOfBasisMatrix) {
+        return inverse(changeOfBasisMatrix)*matrix*changeOfBasisMatrix;
     }
 
     matrix3x3 matrix3x3_change_basis_rotation(const matrix3x3 &m, const matrix3x3 &b) {

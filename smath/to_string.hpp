@@ -10,6 +10,12 @@ namespace smath {
         return "(" + std::to_string(v.x) + "," + std::to_string(v.y) + "," + std::to_string(v.z) + ")";
     }
 
+    std::string to_string(const matrix2x2 &m) {
+        return
+            "|" + std::to_string(m[0][0]) + ", " + std::to_string(m[0][1]) + "| \n" +
+            "|" + std::to_string(m[1][0]) + ", " + std::to_string(m[1][1]) + "| \n";
+    }
+
     std::string to_string(const matrix3x3 &m) {
         return 
             "|" + std::to_string(m[0][0]) + ", " + std::to_string(m[0][1]) + ", " + std::to_string(m[0][2]) + "| \n" +

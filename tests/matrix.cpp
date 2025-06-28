@@ -17,6 +17,8 @@ int main() {
     matrix4x4 translationMatrix = matrix4x4_from_translation(vector3{1,2,3});
     std::cout << to_string(translationMatrix) << "\n \n";
 
+    std::cout << "-------------------Matrix3x3 Multiplication----------------------- \n \n";
+
     std::cout << "Matrix3x3 A: \n";
     matrix3x3 matrix3x3A = {
         1, 4, 3,
@@ -33,12 +35,65 @@ int main() {
     };
     std::cout << to_string(matrix3x3B) << "\n \n";
 
+    
     std::cout << "Matrix3x3 A * Matrix3x3 B: \n";
     std::cout << to_string(matrix3x3A*matrix3x3B) << "\n \n";
+    
+    std::cout << "-------------------Matrix2x2 Multiplication----------------------- \n \n";
 
-    // TODO: this seems to be wrong at hte moment
-    std::cout << "Matrix A change of basis to Matrix B: \n";
-    std::cout << to_string(matrix3x3_change_basis(matrix3x3A, matrix3x3B)) << "\n \n";
+    std::cout << "Matrix2x2 A: \n";
+    matrix2x2 matrix2x2A = {
+        1, 2,
+        7, 4
+    };
+    std::cout << to_string(matrix2x2A) << "\n \n";
+
+    std::cout << "Matrix2x2 B: \n";
+    matrix2x2 matrix2x2B = {
+        1, 1,
+        2, 7
+    };
+    std::cout << to_string(matrix2x2B) << "\n \n";
+
+    
+    std::cout << "Matrix2x2 A * Matrix2x2 B: \n";
+    std::cout << to_string(matrix2x2A*matrix2x2B) << "\n \n";
+
+    std::cout << "-------------------Matrix2x2 Inverse----------------------- \n \n";
+
+    {
+    std::cout << "Matrix2x2 A: \n";
+    matrix2x2 matrix2x2A = {
+        1, 2,
+        7, 4
+    };
+    std::cout << to_string(matrix2x2A) << "\n \n";
+    
+    std::cout << "Matrix2x2 A inverse \n";
+    std::cout << to_string(inverse(matrix2x2A)) << "\n \n";
+    }
+
+    std::cout << "-------------------Matrix2x2 Change of basis----------------------- \n \n";
+
+    std::cout << "Change of basis matrix: \n";
+    matrix2x2 changeOfBasisMatrix = {
+        2, -1,
+        1, 1
+    };
+    std::cout << to_string(changeOfBasisMatrix) << "\n \n";
+
+    std::cout << "Transformation matrix: \n";
+    matrix2x2 transformationMatrix {
+        0, -1,
+        1, 0
+    };
+    std::cout << to_string(transformationMatrix) << "\n \n";
+
+    // TODO: this seems to be wrong at the moment
+    std::cout << "transformation matrix with changed basis: \n";
+    std::cout << to_string(matrix2x2_change_basis(transformationMatrix, changeOfBasisMatrix)) << "\n \n";
+
+    std::cout << "-------------------Matrix4x4 Multiplication----------------------- \n \n";
 
     std::cout << "Matrix4x4 A: \n";
     matrix4x4 matrix4x4A = {

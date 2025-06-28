@@ -4,6 +4,18 @@
 #include <cstddef>
 
 namespace smath {
+
+    struct matrix2x2 {
+        float data[2][2];
+
+        inline float* operator[](const size_t i) {
+            return data[i];
+        }
+
+        inline const float* operator[](const size_t i) const {
+            return data[i];
+        }
+    };
     struct matrix3x3 {
         float data[3][3];
         
@@ -27,5 +39,6 @@ namespace smath {
             return data[i];
         }
     };
+
 }
 #endif
