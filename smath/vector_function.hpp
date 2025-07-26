@@ -96,6 +96,11 @@ namespace smath {
         };
     }
 
+    inline vector3 normalized(const vector3 &v) {
+        float f = v.length();
+        return vector3{v.x*f, v.y*f, v.z*f};
+    }
+
     inline vector3 project(const vector3 &a, const vector3 &b) {
         return (dot(a,b)/dot(b,b))*b;
     }

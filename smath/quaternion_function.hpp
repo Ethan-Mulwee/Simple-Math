@@ -3,6 +3,8 @@
 
 #include <cmath>
 
+#include "quaternion_type.hpp"
+#include "vector_function.hpp"
 #include "smath_types.hpp"
 
 namespace smath{
@@ -57,6 +59,19 @@ namespace smath{
     // reinterpet a vector3 as a quaternion TODO: intution
     inline quaternion quaternion_from_vector3(const vector3 &v) {
         return quaternion{v.x, v.y, v.z, 0};
+    }
+
+    inline quaternion quaternion_from_axis_angle(const vector3 &axis, const float angle) {
+        quaternion result;
+        
+        vector3 axisNormalized = normalized(axis); 
+        result.w = cos(angle/2.0f);
+        float s = sin(angle/2.0f);
+        result.x = s*axis.x;
+        result.y = s*axis.y;
+        result.z = s*axis.z;
+
+        return result;
     }
 }
 
