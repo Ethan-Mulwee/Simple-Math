@@ -31,6 +31,36 @@ namespace smath {
             "|" + std::to_string(m[3][0]) + ", " + std::to_string(m[3][1]) + ", " + std::to_string(m[3][2]) + ", " + std::to_string(m[3][3]) + "|";
     }
 
+    std::string to_string_pretty(const matrix3x3 &m) {
+        unsigned longest = 0;
+
+        std::string strings[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                unsigned length = std::to_string(m[i][j]).length();
+                if (length > longest) {
+                    longest = length;
+                }
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                std::string str = std::to_string(m[i][j]);
+                while (str.length() < longest) {
+                    str += "0";
+                }
+                strings[i][j] = str;
+            }
+        }
+
+        return
+            "|" + strings[0][0] + ", " + strings[0][1] + ", " + strings[0][2] + ", " + "| \n" +
+            "|" + strings[1][0] + ", " + strings[1][1] + ", " + strings[1][2] + ", " + "| \n" +
+            "|" + strings[2][0] + ", " + strings[2][1] + ", " + strings[2][2] + ", " + "| \n";
+    }
+
     std::string to_string_pretty(const matrix4x4 &m) {
         unsigned longest = 0;
 

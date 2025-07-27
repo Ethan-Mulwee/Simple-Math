@@ -118,4 +118,28 @@ int main() {
 
     std::cout << "Matrix4x4 A * Matrix4x4 B: \n";
     std::cout << to_string_pretty(matrix4x4A*matrix4x4B) << "\n \n";
+
+    std::cout << "-------------------Matrix3x3 from Quaternion----------------------- \n \n";
+
+    {
+        quaternion q = quaternion_from_axis_angle(vector3{1,0.5f,0}, M_PI/2.0f);
+        std::cout << "Quaternion: " << to_string(q) << "\n";
+        std::cout << "Length: " << q.length() << "\n"; 
+        std::cout << "Matrix3x3 from Quaternion: \n" << to_string_pretty(matrix3x3_from_quaternion(q)) << "\n";
+        std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(q)) << "\n\n";     
+    }
+
+    std::cout << "-------------------Matrix3x3 from Determinant----------------------- \n \n";
+
+    {
+        matrix3x3 m = {
+            0.2f, 0.1f, 0.6f,
+            0.5f, 0.6f, 0.0f,
+            1.2f, 2.6f, 0.5f
+        };
+
+        std::cout << "Matrix: \n" << to_string_pretty(m) << "\n";
+        std::cout << "Determiant: " << determinant(m) << "\n\n";
+    }
+
 }
