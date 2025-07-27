@@ -357,6 +357,15 @@ namespace smath {
         };
     }
 
+    matrix4x4 matrix4x4_from_matrix3x3(const matrix3x3 &m) {
+        return matrix4x4{
+            m[0][0], m[0][1], m[0][2], 0,
+            m[1][0], m[1][1], m[1][2], 0,
+            m[2][0], m[2][1], m[2][2], 0,
+                  0,       0,       0, 1
+        };
+    }
+
     // TODO:
     // inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
 

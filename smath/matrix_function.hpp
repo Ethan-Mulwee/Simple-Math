@@ -100,6 +100,8 @@ namespace smath {
 
     inline matrix4x4 matrix4x4_from_translation(const vector3 &v);
 
+    inline matrix4x4 matrix4x4_from_matrix3x3(const matrix3x3 &m);
+
     // TODO:
     // inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
 
