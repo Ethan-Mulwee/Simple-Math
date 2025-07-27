@@ -85,6 +85,7 @@ namespace smath {
     inline matrix4x4 transpose(const matrix4x4 &m);
     
     // this assumes the bottom row is 0, 0, 0, 1
+    // check if in the case that you have a 3x3 rot mat and a position that inverting is not much faster via transpose?
     inline matrix4x4 invert_transform(const matrix4x4 &m);
 
     // Get column vector

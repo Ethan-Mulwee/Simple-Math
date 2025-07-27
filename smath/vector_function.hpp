@@ -64,6 +64,12 @@ namespace smath {
         return vector3{a.x-b.x, a.y-b.y, a.z-b.z};
     }
 
+    inline void operator-=(vector3 &a, const vector3 &b) {
+        a.x -= b.x;
+        a.y -= b.y;
+        a.z -= b.z;
+    }
+
     // Component-wise multipication of two vectors
     inline vector3 operator*(const vector3 &a, const vector3 &b) {
         return vector3{a.x*b.x, a.y*b.y, a.z*b.z};
