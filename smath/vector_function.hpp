@@ -80,6 +80,10 @@ namespace smath {
         return vector3{v.x*s, v.y*s, v.z*s};
     }
 
+    inline void operator*=(vector3 &v, const float s) {
+        v.x *= s; v.y *= s; v.z *= s;
+    }
+
     // Scale vector by a scalar
     inline vector3 operator*(const float s, const vector3 &v) {
         return vector3{v.x*s, v.y*s, v.z*s};
