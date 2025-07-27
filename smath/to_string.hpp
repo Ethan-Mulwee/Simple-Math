@@ -63,7 +63,7 @@ namespace smath {
     }
 
     std::string to_string(const quaternion &q) {
-        return "(" + std::to_string(q.x) + ", " + std::to_string(q.y) + ", " + std::to_string(q.z) + ", " + std::to_string(q.w) + ")";
+        return "( x:" + std::to_string(q.x) + ", y:" + std::to_string(q.y) + ", z:" + std::to_string(q.z) + ", w:" + std::to_string(q.w) + ")";
     }
 }
 

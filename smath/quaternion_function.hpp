@@ -11,10 +11,10 @@ namespace smath{
     // Multiply quaternions
     inline quaternion operator*(const quaternion &q, const quaternion &p) {
         return quaternion{
-            q.w*p.w-q.x*p.x-q.y*p.y-q.z*p.z,
-            q.w*p.x+q.x*p.w+q.y*p.z-q.z*p.y,
-            q.w*p.y-q.x*p.z+q.y*p.w+q.z*p.x,
-            q.w*p.z+q.x*p.y-q.y*p.x+q.z*p.w
+            q.w*p.x+q.x*p.w+q.y*p.z-q.z*p.y, // x
+            q.w*p.y-q.x*p.z+q.y*p.w+q.z*p.x, // y
+            q.w*p.z+q.x*p.y-q.y*p.x+q.z*p.w, // z
+            q.w*p.w-q.x*p.x-q.y*p.y-q.z*p.z  // w
         };
     }
 
@@ -67,11 +67,19 @@ namespace smath{
         vector3 axisNormalized = normalized(axis); 
         result.w = cos(angle/2.0f);
         float s = sin(angle/2.0f);
-        result.x = s*axis.x;
-        result.y = s*axis.y;
-        result.z = s*axis.z;
+        result.x = s*axisNormalized.x;
+        result.y = s*axisNormalized.y;
+        result.z = s*axisNormalized.z;
 
         return result;
+    }
+
+    // Quaternion from (XYZ) euler angle
+    inline quaternion quaternion_from_euler_angles(const vector3 &euler) {
+        quaternion xRotation = quaternion_from_axis_angle(vector3{1,0,0}, euler.x);
+        quaternion yRotation = quaternion_from_axis_angle(vector3{0,1,0}, euler.y);
+        quaternion zRotation = quaternion_from_axis_angle(vector3{0,0,1}, euler.z);
+        return xRotation * yRotation * zRotation;
     }
 }
 
