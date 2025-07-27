@@ -6,7 +6,9 @@ int main() {
 
     using namespace smath;
 
-    std::cout << "\n MATRIX TESTING: \n \n";
+    std::cout << "\n--------------------------------------------------------------------------\n"
+                 "                              Matrix Testing                              \n"
+                 "--------------------------------------------------------------------------\n\n";
 
     std::cout << "-------------------Transformation Matrix Creation----------------------- \n \n";
     
