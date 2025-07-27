@@ -366,6 +366,24 @@ namespace smath {
         };
     }
 
+    matrix4x4 matrix4x4_from_identity() {
+        return matrix4x4{
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        };
+    }
+
+    matrix4x4 matrix4x4_from_diagonal(const float s) {
+        return matrix4x4{
+            s, 0, 0, 0,
+            0, s, 0, 0,
+            0, 0, s, 0,
+            0, 0, 0, s
+        };
+    }
+
     // TODO:
     // inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
 

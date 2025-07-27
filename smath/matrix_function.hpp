@@ -103,6 +103,10 @@ namespace smath {
 
     inline matrix4x4 matrix4x4_from_matrix3x3(const matrix3x3 &m);
 
+    inline matrix4x4 matrix4x4_from_identity();
+
+    inline matrix4x4 matrix4x4_from_diagonal(const float s);
+
     // TODO:
     // inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
 
