@@ -75,10 +75,10 @@ namespace smath{
     }
 
     // Quaternion from (XYZ) euler angle
-    inline quaternion quaternion_from_euler_angles(const vector3 &euler) {
-        quaternion xRotation = quaternion_from_axis_angle(vector3{1,0,0}, euler.x);
-        quaternion yRotation = quaternion_from_axis_angle(vector3{0,1,0}, euler.y);
-        quaternion zRotation = quaternion_from_axis_angle(vector3{0,0,1}, euler.z);
+    inline quaternion quaternion_from_euler_angles(const float x, const float y, const float z) {
+        quaternion xRotation = quaternion_from_axis_angle(vector3{1,0,0}, x);
+        quaternion yRotation = quaternion_from_axis_angle(vector3{0,1,0}, y);
+        quaternion zRotation = quaternion_from_axis_angle(vector3{0,0,1}, z);
         return xRotation * yRotation * zRotation;
     }
 }

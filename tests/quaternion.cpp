@@ -35,7 +35,7 @@ int main() {
     {
         vector3 euler = vector3{M_PI/2, 0.2f, 0.0f};
         std::cout << "euler: " << to_string(euler) << "\n";
-        std::cout << "quaternion from euler" << to_string(quaternion_from_euler_angles(euler)) << "\n"; 
+        std::cout << "quaternion from euler" << to_string(quaternion_from_euler_angles(euler.x, euler.y, euler.z)) << "\n"; 
     }
 
     std::cout << "\n ---------------------------Quaternion multiplcation--------------------------- \n \n";
