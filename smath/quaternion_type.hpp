@@ -10,7 +10,7 @@ namespace smath{
         float x, y, z, w;
 
         float angle() const {
-            return acos(w)*2;
+            return acos(w)*2.0f;
         }
 
         vector3 axis() const {

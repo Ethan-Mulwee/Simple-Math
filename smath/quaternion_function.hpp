@@ -65,8 +65,8 @@ namespace smath{
         quaternion result;
         
         vector3 axisNormalized = normalized(axis); 
-        result.w = cos(angle/2.0f);
-        float s = sin(angle/2.0f);
+        result.w = cosf(angle/2.0f);
+        float s = sinf(angle/2.0f);
         result.x = s*axisNormalized.x;
         result.y = s*axisNormalized.y;
         result.z = s*axisNormalized.z;
@@ -75,11 +75,20 @@ namespace smath{
     }
 
     // Quaternion from (XYZ) euler angle
-    inline quaternion quaternion_from_euler_angles(const float x, const float y, const float z) {
+    inline quaternion quaternion_from_euler_angles_XYZ(const float x, const float y, const float z) {
         quaternion xRotation = quaternion_from_axis_angle(vector3{1,0,0}, x);
         quaternion yRotation = quaternion_from_axis_angle(vector3{0,1,0}, y);
         quaternion zRotation = quaternion_from_axis_angle(vector3{0,0,1}, z);
         return xRotation * yRotation * zRotation;
+    }
+
+    // Quaternion from (ZYX) yaw, pitch, roll Euler Angles
+    inline quaternion quaternion_from_euler_angles_ZYX(const float yaw, const float pitch, const float roll) {
+        quaternion qYaw{0.0f, 0.0f, sinf(yaw/2.0f), cosf(yaw/2.0f)};
+        quaternion qPitch{0.0f, sinf(pitch/2.0f), 0.0f, cosf(pitch/2.0f)};
+        quaternion qRoll{sinf(roll/2.0f), 0.0f, 0.0f, cosf(roll/2.0f)};
+
+        return qYaw * qPitch * qRoll;
     }
 }
 

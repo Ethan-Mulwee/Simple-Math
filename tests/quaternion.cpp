@@ -30,9 +30,12 @@ int main() {
     std::cout << "\n ---------------------------Quaterion from Euler--------------------------- \n \n";
 
     {
-        vector3 euler = vector3{M_PI/2, 0.2f, 0.0f};
-        std::cout << "euler: " << to_string(euler) << "\n";
-        std::cout << "quaternion from euler" << to_string(quaternion_from_euler_angles(euler.x, euler.y, euler.z)) << "\n"; 
+        vector3 euler = vector3{M_PI/2.0f, M_PI/2.0f, 0.0f};
+        quaternion q = quaternion_from_euler_angles_XYZ(euler.x, euler.y, euler.z);
+        std::cout << "Euler (XYZ): " << to_string(euler) << "\n";
+        std::cout << "Quaternion from euler" << to_string(q) << "\n"; 
+        std::cout << "Axis: " << to_string(q.axis()) << "\n";
+        std::cout << "Angle: " << q.angle() << "\n";
     }
 
     std::cout << "\n ---------------------------Quaternion multiplcation--------------------------- \n \n";
