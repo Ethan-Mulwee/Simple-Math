@@ -71,6 +71,10 @@ namespace smath {
 
     inline matrix3x3 matrix3x3_from_matrix4x4(const matrix4x4 &m);
 
+    inline matrix3x3 matrix3x3_from_identity();
+
+    inline matrix3x3 matrix3x3_from_diagonal(const float s);
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix4x4                                  */
     /* -------------------------------------------------------------------------- */

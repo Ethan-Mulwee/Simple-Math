@@ -200,12 +200,27 @@ namespace smath {
         return transpose(b)*m*b;
     }
 
-    inline matrix3x3 matrix3x3_from_matrix4x4(const matrix4x4 &m)
-    {
+    inline matrix3x3 matrix3x3_from_matrix4x4(const matrix4x4 &m) {
         return matrix3x3{
             m[0][0], m[0][1], m[0][2],
             m[1][0], m[1][1], m[1][2],
             m[2][0], m[2][1], m[2][2]
+        };
+    }
+
+    matrix3x3 matrix3x3_from_identity() {
+        return matrix3x3{
+            1.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 1.0f
+        };
+    }
+
+    matrix3x3 matrix3x3_from_diagonal(const float s) {
+        return matrix3x3{
+            s, 0.0f, 0.0f,
+            0.0f, s, 0.0f,
+            0.0f, 0.0f, s
         };
     }
 
