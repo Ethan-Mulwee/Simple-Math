@@ -64,9 +64,9 @@ namespace smath {
         }
 
         return
-            "|" + strings[0][0] + ", " + strings[0][1] + ", " + strings[0][2] + ", " + "| \n" +
-            "|" + strings[1][0] + ", " + strings[1][1] + ", " + strings[1][2] + ", " + "| \n" +
-            "|" + strings[2][0] + ", " + strings[2][1] + ", " + strings[2][2] + ", " + "| \n";
+            "|" + strings[0][0] + ", " + strings[0][1] + ", " + strings[0][2] + "| \n" +
+            "|" + strings[1][0] + ", " + strings[1][1] + ", " + strings[1][2] + "| \n" +
+            "|" + strings[2][0] + ", " + strings[2][1] + ", " + strings[2][2] + "| \n";
     }
 
     std::string to_string_pretty(const matrix4x4 &m) {

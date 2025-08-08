@@ -129,7 +129,7 @@ int main() {
         std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(q)) << "\n\n";     
     }
 
-    std::cout << "-------------------Matrix3x3 from Determinant----------------------- \n \n";
+    std::cout << "-------------------Matrix3x3 Determinant ----------------------- \n \n";
 
     {
         matrix3x3 m = {
