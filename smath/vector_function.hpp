@@ -115,9 +115,13 @@ namespace smath {
         return (dot(a,b)/dot(b,b))*b;
     }
 
-    inline vector3 vector3_from_vector4(const vector3 &a, const vector4 &b) {
-        return vector3{b.x, b.y, b.z};
+    inline vector3 vector3_from_vector4(const vector4 &v) {
+        return vector3{v.x, v.y, v.z};
     } 
+
+    inline vector3 vector3_from_homogeneous_coordinate(const vector4 &v) {
+        return vector3{v.x/v.w, v.y/v.w, v.z/v.w};
+    }
 
     /* -------------------------------------------------------------------------- */
     /*                                   vector4                                  */
