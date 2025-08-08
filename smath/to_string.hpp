@@ -6,8 +6,16 @@
 #include "matrix_type.hpp"
 
 namespace smath {
+    std::string to_string(const vector2 &v) {
+        return "(" + std::to_string(v.x) + "," + std::to_string(v.y) + ")";
+    }
+
     std::string to_string(const vector3 &v) {
         return "(" + std::to_string(v.x) + "," + std::to_string(v.y) + "," + std::to_string(v.z) + ")";
+    }
+
+    std::string to_string(const vector4 &v) {
+        return "(" + std::to_string(v.x) + "," + std::to_string(v.y) + "," + std::to_string(v.z) + "," + std::to_string(v.w) + ")";
     }
 
     std::string to_string(const matrix2x2 &m) {
