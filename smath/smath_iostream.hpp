@@ -18,7 +18,7 @@
 namespace smath {
 
     std::ostream &operator <<(std::ostream &os, const vector2 &v) {
-        os << "vector2(" 
+        os << "(" 
         ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET
         ")";
@@ -26,7 +26,7 @@ namespace smath {
     }
 
     std::ostream &operator <<(std::ostream &os, const vector3 &v) {
-        os << "vector3(" 
+        os << "(" 
         ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_BLUE + std::to_string(v.z) + ANSI_COLOR_RESET
@@ -35,7 +35,7 @@ namespace smath {
     }
 
     std::ostream &operator <<(std::ostream &os, const vector4 &v) {
-        os << "vector4(" 
+        os << "(" 
         ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_BLUE + std::to_string(v.z) + ANSI_COLOR_RESET ", "
@@ -45,12 +45,12 @@ namespace smath {
     }
 
         std::ostream &operator <<(std::ostream &os, const quaternion &q) {
-        os << "quaternion(" 
+        os << "(" 
         ANSI_COLOR_RED + std::to_string(q.x) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_GREEN + std::to_string(q.y) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_BLUE + std::to_string(q.z) + ANSI_COLOR_RESET ", "
         ANSI_COLOR_MAGENTA + std::to_string(q.w) + ANSI_COLOR_RESET
-        "), Length = " + std::to_string(q.length());
+        "), length = " + std::to_string(q.length());
         return os;
     }
 
@@ -79,8 +79,8 @@ namespace smath {
         }
 
         os <<
-        "matrix2x2: \n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET "| \n" +
-                       "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET "| \n";
+        "\n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET "| \n" +
+            "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET "| \n";
         return os;
     }
 
@@ -109,9 +109,9 @@ namespace smath {
         }
 
         os <<
-        "matrix3x3: \n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[0][2] + ANSI_COLOR_RESET "| \n" +
-                       "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[1][2] + ANSI_COLOR_RESET "| \n" +
-                       "|" ANSI_COLOR_RED + strings[2][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[2][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET "| \n";
+        "\n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[0][2] + ANSI_COLOR_RESET "| \n" +
+            "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[1][2] + ANSI_COLOR_RESET "| \n" +
+            "|" ANSI_COLOR_RED + strings[2][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[2][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET "| \n";
         return os;
     }
 
@@ -140,10 +140,10 @@ namespace smath {
         }
 
         os <<
-                "matrix4x4: \n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[0][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[0][3] + ANSI_COLOR_RESET "| \n" +
-                               "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[1][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[1][3] + ANSI_COLOR_RESET "| \n" +
-                               "|" ANSI_COLOR_RED + strings[2][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[2][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[2][3] + ANSI_COLOR_RESET "| \n" +
-                               "|"                + strings[3][0] +                  ", "                  + strings[3][1] +                  ", "                 + strings[3][2] +                  + ", " + strings[3][3] + "| \n";
+                "\n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[0][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[0][3] + ANSI_COLOR_RESET "| \n" +
+                    "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[1][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[1][3] + ANSI_COLOR_RESET "| \n" +
+                    "|" ANSI_COLOR_RED + strings[2][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[2][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[2][3] + ANSI_COLOR_RESET "| \n" +
+                    "|" ANSI_COLOR_RED + strings[3][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[3][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[3][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[3][3] + ANSI_COLOR_RESET "| \n";
         return os;
     }
 

@@ -1,5 +1,6 @@
 #include "smath.hpp"
 #include "to_string.hpp"
+#include "smath_iostream.hpp"
 #include <iostream>
 
 int main() {
@@ -12,9 +13,9 @@ int main() {
     vector3 a = {1,2,3};
     vector3 b = {3,2,1};
 
-    std::cout << "a = " << to_string(a) << "\n";
-    std::cout << "b = " << to_string(b) << "\n";
-    std::cout << "a * b = " << to_string(a*b) << "\n";
+    std::cout << "a = " << a << "\n";
+    std::cout << "b = " << b << "\n";
+    std::cout << "a * b = " << a*b << "\n";
 
     std::cout << "\n";
 
