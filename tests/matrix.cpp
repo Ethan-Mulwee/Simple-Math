@@ -122,11 +122,21 @@ int main() {
     std::cout << "-------------------Matrix3x3 from Quaternion----------------------- \n \n";
 
     {
-        quaternion q = quaternion_from_axis_angle(vector3{1,0.5f,0}, M_PI/2.0f);
-        std::cout << "Quaternion: " << to_string(q) << "\n";
-        std::cout << "Length: " << q.length() << "\n"; 
+        quaternion q = quaternion_from_axis_angle(vector3{0.6f,0.5f,0.2f}, M_PI/2.0f);
+        std::cout << to_string_verbose(q) << "\n";
         std::cout << "Matrix3x3 from Quaternion: \n" << to_string_pretty(matrix3x3_from_quaternion(q)) << "\n";
-        std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(q)) << "\n\n";     
+        std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(q)) << "\n\n";
+
+        // quaternion p = quaternion_from_matrix3x3(matrix3x3_from_quaternion(q));
+        // std::cout << "Quaternion from Matirx3x3: " << to_string(p) << "\n";   
+        // std::cout << "Length: " << p.length() << "\n";   
+        // std::cout << "Axis: " << to_string(p.axis()) << "\n";   
+        // std::cout << "Angle: " << p.angle() << "\n\n";
+        
+        // std::cout << "Matrix3x3 from Quaternion: \n" << to_string_pretty(matrix3x3_from_quaternion(p)) << "\n";
+        // std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(p)) << "\n\n";  
+
+        
     }
 
     std::cout << "-------------------Matrix3x3 Determinant ----------------------- \n \n";

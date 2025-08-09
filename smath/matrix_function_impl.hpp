@@ -171,17 +171,17 @@ namespace smath {
         matrix3x3 m;
 
         // i hat
-        m[0][0] = 2.0f * (q.x*q.x + q.y*q.y)-1.0f;
-        m[1][0] = 2.0f * (q.y*q.z + q.x*q.w);
-        m[2][0] = 2.0f * (q.y*q.w - q.x*q.z);
+        m[0][0] = q.x*q.x-q.y*q.y-q.z*q.z+q.w*q.w;
+        m[1][0] = 2*q.w*q.z+2*q.x*q.y;
+        m[2][0] = 2*q.x*q.z-2*q.w*q.y;
         // j hat
-        m[0][1] = 2.0f * (q.y*q.z - q.x*q.w);
-        m[1][1] = 2.0f * (q.x*q.x + q.z*q.z) - 1.0f;
-        m[2][1] = 2.0f * (q.z*q.w + q.x*q.y);
+        m[0][1] = 2*q.x*q.y-2*q.w*q.z;
+        m[1][1] = q.w*q.w-q.x*q.x+q.y*q.y-q.z*q.z;
+        m[2][1] = 2*q.w*q.x+2*q.y*q.z;
         // k hat
-        m[0][2] = 2.0f * (q.y*q.w + q.x*q.z);
-        m[1][2] = 2.0f * (q.z*q.w - q.x*q.y);
-        m[2][2] = 2.0f * (q.x*q.x + q.w*q.w) - 1.0f;
+        m[0][2] = 2*q.x*q.z+2*q.w*q.y;
+        m[1][2] = 2*q.y*q.z-2*q.w*q.x;
+        m[2][2] = q.w*q.w-q.x*q.x-q.y*q.y+q.z*q.z;
     
         return m;
     }

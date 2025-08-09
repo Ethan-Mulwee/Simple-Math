@@ -5,7 +5,16 @@
 #include "vector_type.hpp"
 #include "matrix_type.hpp"
 
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
+
 namespace smath {
+
     std::string to_string(const vector2 &v) {
         return "(" + std::to_string(v.x) + "," + std::to_string(v.y) + ")";
     }
@@ -102,6 +111,13 @@ namespace smath {
 
     std::string to_string(const quaternion &q) {
         return "( x:" + std::to_string(q.x) + ", y:" + std::to_string(q.y) + ", z:" + std::to_string(q.z) + ", w:" + std::to_string(q.w) + ")";
+    }
+
+    std::string to_string_verbose (const quaternion &q) {
+        return std::string(
+            "Quaternion: (" ANSI_COLOR_RED "x:" + std::to_string(q.x) + ANSI_COLOR_RESET "," ANSI_COLOR_GREEN " y:" + std::to_string(q.y) + ANSI_COLOR_RESET "," ANSI_COLOR_BLUE " z:" + std::to_string(q.z) + ANSI_COLOR_RESET "," ANSI_COLOR_YELLOW " w:" + std::to_string(q.w) + ANSI_COLOR_RESET ") " + 
+            "Length: (" + std::to_string(q.length()) + "), Axis: " + smath::to_string(q.axis()) + ", Angle: (" + std::to_string(q.angle()) + ")"
+        );
     }
 }
 
