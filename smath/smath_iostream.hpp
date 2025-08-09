@@ -16,14 +16,127 @@
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
 namespace smath {
+
+    std::ostream &operator <<(std::ostream &os, const vector2 &v) {
+        os << "vector2(" 
+        ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET
+        ")";
+        return os;
+    }
+
     std::ostream &operator <<(std::ostream &os, const vector3 &v) {
         os << "vector3(" 
-        ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET "," 
-        ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET "," 
+        ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_BLUE + std::to_string(v.z) + ANSI_COLOR_RESET
         ")";
         return os;
     }
+
+    std::ostream &operator <<(std::ostream &os, const vector4 &v) {
+        os << "vector3(" 
+        ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_BLUE + std::to_string(v.z) + ANSI_COLOR_RESET ", "
+        ANSI_COLOR_MAGENTA + std::to_string(v.w) + ANSI_COLOR_RESET
+        ")";
+        return os;
+    }
+
+    std::ostream &operator <<(std::ostream &os, const matrix2x2 &m) {
+        unsigned longest = 0;
+
+        std::string strings[2][2];
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                unsigned length = std::to_string(m[i][j]).length();
+                if (length > longest) {
+                    longest = length;
+                }
+            }
+        }
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                std::string str = std::to_string(m[i][j]);
+                while (str.length() < longest) {
+                    str += "0";
+                }
+                strings[i][j] = str;
+            }
+        }
+
+        os <<
+        "matrix2x2: \n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET "| \n" +
+                       "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET "| \n";
+        return os;
+    }
+
+    std::ostream &operator <<(std::ostream &os, const matrix3x3 &m) {
+        unsigned longest = 0;
+
+        std::string strings[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                unsigned length = std::to_string(m[i][j]).length();
+                if (length > longest) {
+                    longest = length;
+                }
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                std::string str = std::to_string(m[i][j]);
+                while (str.length() < longest) {
+                    str += "0";
+                }
+                strings[i][j] = str;
+            }
+        }
+
+        os <<
+        "matrix3x3: \n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[0][2] + ANSI_COLOR_RESET "| \n" +
+                       "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[1][2] + ANSI_COLOR_RESET "| \n" +
+                       "|" ANSI_COLOR_RED + strings[2][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[2][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET "| \n";
+        return os;
+    }
+
+    std::ostream &operator <<(std::ostream &os, const matrix4x4 &m) {
+        unsigned longest = 0;
+
+        std::string strings[4][4];
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                unsigned length = std::to_string(m[i][j]).length();
+                if (length > longest) {
+                    longest = length;
+                }
+            }
+        }
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                std::string str = std::to_string(m[i][j]);
+                while (str.length() < longest) {
+                    str += "0";
+                }
+                strings[i][j] = str;
+            }
+        }
+
+        os <<
+                "matrix4x4: \n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[0][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[0][3] + ANSI_COLOR_RESET "| \n" +
+                               "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[1][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[1][3] + ANSI_COLOR_RESET "| \n" +
+                               "|" ANSI_COLOR_RED + strings[2][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[2][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[2][3] + ANSI_COLOR_RESET "| \n" +
+                               "|"                + strings[3][0] +                  ", "                  + strings[3][1] +                  ", "                 + strings[3][2] +                  + ", " + strings[3][3] + "| \n";
+        return os;
+    }
+
 }
 
 #endif
