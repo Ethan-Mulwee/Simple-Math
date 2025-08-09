@@ -2,8 +2,7 @@
 #define SMATH_TO_STRING
 
 #include <string>
-#include "vector_type.hpp"
-#include "matrix_type.hpp"
+#include "smath_types.hpp"
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"

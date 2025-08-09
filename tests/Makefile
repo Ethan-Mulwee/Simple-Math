@@ -4,6 +4,8 @@ MAKEFLAGS += --no-print-directory
 
 all: 
 	@echo running all tests
+	mkdir -p out/
+	$(MAKE) stdout
 	$(MAKE) vector
 	$(MAKE) quaternion
 	$(MAKE) matrix
@@ -23,6 +25,10 @@ matrix:
 preformance:
 	g++ preformance.cpp -o out/preformance.out -I../smath -O2
 	./out/preformance.out
+
+stdout:
+	g++ stdout.cpp -o out/stdout.out -I../smath -O2
+	./out/stdout.out
 
 clean:
 	rm out/matrix.out
