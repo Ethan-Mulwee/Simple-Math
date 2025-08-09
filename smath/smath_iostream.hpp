@@ -35,12 +35,22 @@ namespace smath {
     }
 
     std::ostream &operator <<(std::ostream &os, const vector4 &v) {
-        os << "vector3(" 
+        os << "vector4(" 
         ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_BLUE + std::to_string(v.z) + ANSI_COLOR_RESET ", "
         ANSI_COLOR_MAGENTA + std::to_string(v.w) + ANSI_COLOR_RESET
         ")";
+        return os;
+    }
+
+        std::ostream &operator <<(std::ostream &os, const quaternion &q) {
+        os << "quaternion(" 
+        ANSI_COLOR_RED + std::to_string(q.x) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_GREEN + std::to_string(q.y) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_BLUE + std::to_string(q.z) + ANSI_COLOR_RESET ", "
+        ANSI_COLOR_MAGENTA + std::to_string(q.w) + ANSI_COLOR_RESET
+        "), Length = " + std::to_string(q.length());
         return os;
     }
 

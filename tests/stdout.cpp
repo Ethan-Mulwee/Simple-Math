@@ -35,8 +35,12 @@ int main() {
     };
 
     std::cout << "m2x2: " << m2x2 << "\n";
-    std::cout << "m3x3 = " << m3x3 << "\n\n";
+    std::cout << "m3x3 = " << m3x3 << "\n";
     std::cout << "m4x4 = " << m4x4 << "\n";
+
+    quaternion q = {1,2,3,4};
+
+    std::cout << "q = " << q << "\n";
 
     std::cout << "\n";
 
