@@ -140,7 +140,7 @@ int main() {
         
     }
 
-    std::cout << "-------------------Matrix3x3 Determinant ----------------------- \n \n";
+    std::cout << "-------------------Matrix3x3 Determinant----------------------- \n \n";
 
     {
         matrix3x3 m = {
@@ -152,5 +152,37 @@ int main() {
         std::cout << "Matrix:" << m << "\n";
         std::cout << "Determiant: " << determinant(m) << "\n\n";
     }
+
+    std::cout << "-------------------Matrix3x3 Inverse Test----------------------- \n \n";
+
+    {
+        matrix3x3 m = {
+            0.2f, 0.1f, 0.6f,
+            0.5f, 0.6f, 0.0f,
+            1.2f, 2.6f, 0.5f
+        };
+
+        matrix3x3 i = inverse(m);
+
+        std::cout << "Matrix:" << m << "\n";
+        std::cout << "Inverse:" << i << "\n";
+        std::cout << "Product" << m*i << "\n";
+        std::cout << "Inverse Test: " << matrix3x3_is_inverse(i, m) << "\n";
+
+    }
+
+    std::cout << "-------------------Matrix3x3 Orthonormal Test----------------------- \n \n";
+
+    {
+        matrix3x3 m = {
+            1.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 1.0f
+        };
+
+        std::cout << "Matrix:" << m << "\n";
+        std::cout << "Orthonormal: " << matrix3x3_is_orthonormal(m) << "\n\n";
+    }
+
 
 }

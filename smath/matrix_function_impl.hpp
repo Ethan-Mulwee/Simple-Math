@@ -224,6 +224,39 @@ namespace smath {
         };
     }
 
+    bool matrix3x3_is_inverse(const matrix3x3 inverse, const matrix3x3 matrix, float epsilon) {
+        matrix3x3 product = matrix*inverse;
+        matrix3x3 identity = matrix3x3_from_identity();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                bool upperBound = product[i][j] < identity[i][j] + epsilon;
+                bool lowerBound = product[i][j] > identity[i][j] - epsilon;
+
+                if (!(upperBound && lowerBound))
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    bool matrix3x3_is_orthonormal(const matrix3x3 &m, float epsilon) {
+        // float epsilon = 0.001f;
+
+        // for (int i = 0; i < 3; i++) {
+        //     vector3 basisVector = vector3_from_matrix3x3(m, i);
+        //     bool upperBound = basisVector.length() < 1.0f + epsilon;
+        //     bool lowerBound = basisVector.length() > 1.0f - epsilon;
+
+        //     if (!(upperBound && lowerBound))
+        //         return false;
+        // }
+
+        // return true;
+        return matrix3x3_is_inverse(transpose(m), m);
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix4x4                                  */
     /* -------------------------------------------------------------------------- */

@@ -75,6 +75,11 @@ namespace smath {
 
     inline matrix3x3 matrix3x3_from_diagonal(const float s);
 
+    // Checks if i is an inverse of m
+    inline bool matrix3x3_is_inverse(const matrix3x3 inverse, const matrix3x3 matrix, float epsilon = 0.001f);
+
+    inline bool matrix3x3_is_orthonormal(const matrix3x3 &m, float epsilon = 0.001f); 
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix4x4                                  */
     /* -------------------------------------------------------------------------- */
