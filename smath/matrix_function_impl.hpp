@@ -101,6 +101,14 @@ namespace smath {
         };
     }
 
+    matrix3x3 operator*(const float s, const matrix3x3 &m) {
+        return matrix3x3{
+            m[0][0] * s, m[0][1] * s, m[0][2] * s,
+            m[1][0] * s, m[1][1] * s, m[1][2] * s,
+            m[2][0] * s, m[2][1] * s, m[2][2] * s
+        };
+    }
+
     inline matrix3x3 operator*(const matrix3x3 &a, const matrix3x3 &b) {
         vector3 ihat = vector3_from_matrix3x3(b, 0);
         vector3 jhat = vector3_from_matrix3x3(b, 1);
@@ -271,7 +279,38 @@ namespace smath {
         };
     }
 
-    inline matrix4x4 operator*(const matrix4x4 &a, const matrix4x4 &b) {
+    void operator*=(matrix4x4 &m, const float s) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                m[i][j] = m[i][j] * s;
+            }
+        }
+    }
+
+    matrix4x4 operator*(const float s, const matrix4x4 &m) {
+        matrix4x4 result;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                result[i][j] = m[i][j] * s;
+            }
+        }
+
+        return result;
+    }
+
+    matrix4x4 operator*(const matrix4x4 &m, const float s) {
+        matrix4x4 result;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                result[i][j] = m[i][j] * s;
+            }
+        }
+
+        return result;
+    }
+
+    inline matrix4x4 operator*(const matrix4x4 &a, const matrix4x4 &b)
+    {
         vector4 ihat = vector4_from_matrix4x4(b, 0);
         vector4 jhat = vector4_from_matrix4x4(b, 1);
         vector4 khat = vector4_from_matrix4x4(b, 2);
@@ -303,57 +342,145 @@ namespace smath {
             m[0][3], m[1][3], m[2][3], m[3][3],
         };
     }
-    
-    // this assumes the bottom row is 0, 0, 0, 1
+
+    // adapted from https://stackoverflow.com/questions/1148309/inverting-a-4x4-matrix#1148405
+    matrix4x4 inverse(const matrix4x4 &m) {
+        matrix4x4 inv; 
+        matrix4x4 invOut; 
+        float det;
+        int i;
+
+        inv[0][0] = m[1][1]  * m[2][2] * m[3][3] - 
+                m[1][1]  * m[3][2] * m[2][3] - 
+                m[1][2]  * m[2][1]  * m[3][3] + 
+                m[1][2]  * m[3][1]  * m[2][3] +
+                m[1][3] * m[2][1]  * m[3][2] - 
+                m[1][3] * m[3][1]  * m[2][2];
+
+        inv[0][1] = -m[0][1]  * m[2][2] * m[3][3] + 
+                m[0][1]  * m[3][2] * m[2][3] + 
+                m[0][2]  * m[2][1]  * m[3][3] - 
+                m[0][2]  * m[3][1]  * m[2][3] - 
+                m[0][3] * m[2][1]  * m[3][2] + 
+                m[0][3] * m[3][1]  * m[2][2];
+
+        inv[0][2]  = m[0][1]  * m[1][2] * m[3][3] - 
+                m[0][1]  * m[3][2] * m[1][3] - 
+                m[0][2]  * m[1][1] * m[3][3] + 
+                m[0][2]  * m[3][1] * m[1][3] + 
+                m[0][3] * m[1][1] * m[3][2] - 
+                m[0][3] * m[3][1] * m[1][2] ;
+
+        inv[0][3]  = -m[0][1]  * m[1][2] * m[2][3] + 
+                m[0][1]  * m[2][2] * m[1][3] +
+                m[0][2]  * m[1][1] * m[2][3] - 
+                m[0][2]  * m[2][1] * m[1][3] - 
+                m[0][3] * m[1][1] * m[2][2] + 
+                m[0][3] * m[2][1] * m[1][2] ;
+
+        inv[1][0] = -m[1][0]  * m[2][2] * m[3][3] + 
+                m[1][0]  * m[3][2] * m[2][3] + 
+                m[1][2]  * m[2][0] * m[3][3] - 
+                m[1][2]  * m[3][0] * m[2][3] - 
+                m[1][3] * m[2][0] * m[3][2] + 
+                m[1][3] * m[3][0] * m[2][2] ;
+
+        inv[1][1]  = m[0][0]  * m[2][2] * m[3][3] - 
+                m[0][0]  * m[3][2] * m[2][3] - 
+                m[0][2]  * m[2][0] * m[3][3] + 
+                m[0][2]  * m[3][0] * m[2][3] + 
+                m[0][3] * m[2][0] * m[3][2] - 
+                m[0][3] * m[3][0] * m[2][2] ;
+
+        inv[1][2]  = -m[0][0]  * m[1][2] * m[3][3] + 
+                m[0][0]  * m[3][2] * m[1][3] + 
+                m[0][2]  * m[1][0] * m[3][3] - 
+                m[0][2]  * m[3][0] * m[1][3] - 
+                m[0][3] * m[1][0] * m[3][2] + 
+                m[0][3] * m[3][0] * m[1][2] ;
+
+        inv[1][3]  = m[0][0]  * m[1][2] * m[2][3] - 
+                m[0][0]  * m[2][2] * m[1][3] - 
+                m[0][2]  * m[1][0] * m[2][3] + 
+                m[0][2]  * m[2][0] * m[1][3] + 
+                m[0][3] * m[1][0] * m[2][2] - 
+                m[0][3] * m[2][0] * m[1][2] ;
+
+        inv[2][0] = m[1][0]  * m[2][1] * m[3][3] - 
+                m[1][0]  * m[3][1] * m[2][3] - 
+                m[1][1]  * m[2][0] * m[3][3] + 
+                m[1][1]  * m[3][0] * m[2][3] + 
+                m[1][3] * m[2][0] * m[3][1] - 
+                m[1][3] * m[3][0] * m[2][1] ;
+
+        inv[2][1]  = -m[0][0]  * m[2][1] * m[3][3] + 
+                m[0][0]  * m[3][1] * m[2][3] + 
+                m[0][1]  * m[2][0] * m[3][3] - 
+                m[0][1]  * m[3][0] * m[2][3] - 
+                m[0][3] * m[2][0] * m[3][1] + 
+                m[0][3] * m[3][0] * m[2][1] ;
+
+        inv[2][2]  = m[0][0]  * m[1][1] * m[3][3] - 
+                m[0][0]  * m[3][1] * m[1][3] - 
+                m[0][1]  * m[1][0] * m[3][3] + 
+                m[0][1]  * m[3][0] * m[1][3] + 
+                m[0][3] * m[1][0] * m[3][1] - 
+                m[0][3] * m[3][0] * m[1][1] ;
+
+        inv[2][3]  = -m[0][0]  * m[1][1] * m[2][3] + 
+                m[0][0]  * m[2][1] * m[1][3] + 
+                m[0][1]  * m[1][0] * m[2][3] - 
+                m[0][1]  * m[2][0] * m[1][3] - 
+                m[0][3] * m[1][0] * m[2][1] + 
+                m[0][3] * m[2][0] * m[1][1] ;
+
+        inv[3][0] = -m[1][0] * m[2][1] * m[3][2] + 
+                m[1][0] * m[3][1] * m[2][2] + 
+                m[1][1] * m[2][0] * m[3][2] - 
+                m[1][1] * m[3][0] * m[2][2] - 
+                m[1][2] * m[2][0] * m[3][1] + 
+                m[1][2] * m[3][0] * m[2][1] ;
+
+        inv[3][1]  = m[0][0] * m[2][1] * m[3][2] - 
+                m[0][0] * m[3][1] * m[2][2] - 
+                m[0][1] * m[2][0] * m[3][2] + 
+                m[0][1] * m[3][0] * m[2][2] + 
+                m[0][2] * m[2][0] * m[3][1] - 
+                m[0][2] * m[3][0] * m[2][1] ;
+
+        inv[3][2]  = -m[0][0] * m[1][1] * m[3][2] + 
+                m[0][0] * m[3][1] * m[1][2] + 
+                m[0][1] * m[1][0] * m[3][2] - 
+                m[0][1] * m[3][0] * m[1][2] - 
+                m[0][2] * m[1][0] * m[3][1] + 
+                m[0][2] * m[3][0] * m[1][1] ;
+
+        inv[3][3]  = m[0][0] * m[1][1] * m[2][2] - 
+                m[0][0] * m[2][1] * m[1][2] - 
+                m[0][1] * m[1][0] * m[2][2] + 
+                m[0][1] * m[2][0] * m[1][2] + 
+                m[0][2] * m[1][0] * m[2][1] - 
+                m[0][2] * m[2][0] * m[1][1] ;
+
+        det = m[0][0] * inv[0][0] + m[1][0] * inv[0][1]  + m[2][0] * inv[0][2]  + m[3][0] * inv[0][3] ;
+
+        det = 1.0 / det;
+
+        for (i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                invOut[i][j] = inv[i][j] * det;
+
+        return invOut;
+    }
+
     inline matrix4x4 invert_transform(const matrix4x4 &m) {
-        float factor = 1.0f / determinant(m);
+        matrix3x3 rotation = matrix3x3_from_matrix4x4(m);
+        matrix3x3 rotationInverse = transpose(rotation);
 
-        vector4 x;
-        x.x = (-m[2][1]*m[1][2]+m[1][1]*m[2][2])*factor;
-        x.y = (m[2][1]*m[1][2]-m[1][0]*m[2][2])*factor;
-        x.z = (-m[2][1]*m[1][1]+m[1][0]*m[2][1])*factor;
-        x.w = 0;
-
-        vector4 y;
-        y.x = (m[2][1]*m[0][2]-m[0][1]*m[2][2])*factor;
-        y.y = (-m[2][0]*m[0][2]+m[0][0]*m[2][2])*factor;
-        y.z = (m[2][0]*m[0][1]-m[0][0]*m[2][1])*factor;
-        y.w = 0;
-
-        vector4 z;
-        z.x = (-m[1][1]*m[0][2]+m[0][1]*m[1][2])*factor;
-        z.y = (m[1][0]*m[0][2]-m[0][0]*m[1][2])*factor;
-        z.z = (-m[1][0]*m[0][1]+m[0][0]*m[1][1])*factor;
-        z.w = 0;
-
-        vector4 w;
-        w.x = (
-            m[2][1]*m[1][2]*m[0][3] -
-            m[1][1]*m[2][2]*m[0][3] -
-            m[2][1]*m[0][2]*m[1][3] +
-            m[0][1]*m[2][2]*m[1][3] +
-            m[1][1]*m[0][2]*m[2][3] -
-            m[0][1]*m[1][2]*m[2][3]
-        ) * factor;
-        w.y = (
-            -m[2][0]*m[1][2]*m[0][3]
-            +m[1][0]*m[2][2]*m[0][3]
-            +m[2][0]*m[0][2]*m[1][3]
-            -m[0][0]*m[2][2]*m[1][3]
-            -m[1][0]*m[0][2]*m[2][3]
-            +m[0][0]*m[1][2]*m[2][3]
-        ) * factor;
-        w.z = (
-            m[2][0]*m[1][1]*m[0][3] -
-            m[1][0]*m[2][1]*m[0][3] -
-            m[2][0]*m[0][1]*m[1][3] +
-            m[0][0]*m[2][1]*m[1][3] +
-            m[1][0]*m[0][1]*m[2][3] -
-            m[0][0]*m[1][1]*m[2][3]
-        ) * factor;
-        w.w = 1;
-
-        return matrix4x4_from_columns(x,y,z,w);
+        vector3 translation = vector3_from_matrix4x4(m, 3);
+        vector3 translationInverse = matrix3x3_transform_vector3(-1.0f*rotationInverse, translation);
+    
+        return matrix4x4_from_transformation(translationInverse, rotationInverse);
     }
 
     // Get column vector
@@ -406,6 +533,22 @@ namespace smath {
         };
     }
 
+    matrix4x4 matrix4x4_from_transformation(const vector3 &translation, const matrix3x3 &rotation) {
+        return matrix4x4 {
+            rotation[0][0], rotation[0][1], rotation[0][2], translation.x,
+            rotation[1][0], rotation[1][1], rotation[1][2], translation.y,
+            rotation[2][0], rotation[2][1], rotation[2][2], translation.z,
+            0,              0,              0,              1
+        };
+    }
+
+    // TODO:
+    // matrix4x4 matrix4x4_from_transformation(const vector3 &translation, const matrix3x3 &rotation, const vector3 &scale) {
+    //     return matrix4x4 {
+    //         rotation[0][0]*scale.x,  
+    //     }
+    // }
+
     matrix4x4 matrix4x4_from_matrix3x3(const matrix3x3 &m) {
         return matrix4x4{
             m[0][0], m[0][1], m[0][2], 0,
@@ -433,10 +576,22 @@ namespace smath {
         };
     }
 
-    // TODO:
-    // inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {
+    bool matrix4x4_is_inverse(const matrix4x4 inverse, const matrix4x4 matrix, float epsilon) {
+        matrix4x4 product = matrix*inverse;
+        matrix4x4 identity = matrix4x4_from_identity();
 
-    // }
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                bool upperBound = product[i][j] < identity[i][j] + epsilon;
+                bool lowerBound = product[i][j] > identity[i][j] - epsilon;
+
+                if (!(upperBound && lowerBound))
+                    return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 #endif

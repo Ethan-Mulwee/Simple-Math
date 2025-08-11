@@ -46,6 +46,8 @@ namespace smath {
     
     inline matrix3x3 operator*(const matrix3x3 &m, const float s);
 
+    inline matrix3x3 operator*(const float s, const matrix3x3 &m);
+
     inline matrix3x3 operator*(const matrix3x3 &a, const matrix3x3 &b);
     
     inline float determinant(const matrix3x3 &m);
@@ -87,11 +89,19 @@ namespace smath {
 
     inline matrix4x4 matrix4x4_from_columns(vector4 x, vector4 y, vector4 z, vector4 w);
 
+    inline void operator*=(matrix4x4 &m, const float s);
+    
+    inline matrix4x4 operator*(const float s, const matrix4x4 &m);
+
+    inline matrix4x4 operator*(const matrix4x4 &m, const float s);
+
     inline matrix4x4 operator*(const matrix4x4 &a, const matrix4x4 &b);
 
     inline float determinant(const matrix4x4 &m);   
 
     inline matrix4x4 transpose(const matrix4x4 &m);
+
+    inline matrix4x4 inverse(const matrix4x4 &m);
     
     // this assumes the bottom row is 0, 0, 0, 1
     // check if in the case that you have a 3x3 rot mat and a position that inverting is not much faster via transpose?
@@ -110,11 +120,17 @@ namespace smath {
 
     inline matrix4x4 matrix4x4_from_translation(const vector3 &v);
 
+    inline matrix4x4 matrix4x4_from_transformation(const vector3 &translation, const matrix3x3 &rotation);
+
+    inline matrix4x4 matrix4x4_from_transformation(const vector3 &translation, const matrix3x3 &rotation, const vector3 &scale);
+
     inline matrix4x4 matrix4x4_from_matrix3x3(const matrix3x3 &m);
 
     inline matrix4x4 matrix4x4_from_identity();
 
     inline matrix4x4 matrix4x4_from_diagonal(const float s);
+
+    inline bool matrix4x4_is_inverse(const matrix4x4 inverse, const matrix4x4 matrix, float epsilon = 0.001f);
 
     // TODO:
     // inline matrix4x4 matrix4x4_from_quaternion(const quaternion &q) {

@@ -95,7 +95,38 @@ int main() {
 
     // TODO: this seems to be wrong at the moment
     std::cout << "Transformation matrix with changed basis: \n";
-    std::cout << matrix2x2_change_basis(transformationMatrix, changeOfBasisMatrix) << "\n \n";
+    std::cout << matrix2x2_change_basis(transformationMatrix, changeOfBasisMatrix) << "\n";
+
+    std::cout << "-------------------Matrix3x3 Inverse----------------------- \n \n";
+
+    {
+        matrix3x3 m {
+            0.6f, 0.2f, 1.0f,
+            0.2f, 1.6f, 2.4f,
+            1.3f, 0.2f, 0.1f
+        };
+
+        matrix3x3 i = inverse(m);
+
+        std::cout << "Matrix: " << m << "\n";
+        std::cout << "Inverse(Matrix): " << i << "\n";
+        std::cout << "Inverse Test: " << matrix3x3_is_inverse(i, m) << "\n\n";
+    }
+
+    std::cout << "-------------------Matrix4x4 Inverse----------------------- \n \n";
+
+    {
+        quaternion rotation = quaternion_from_euler_angles_XYZ(1.0f,1.0f,0.0f);
+        matrix3x3 rotationMatrix = matrix3x3_from_quaternion(rotation);
+        vector3 translation = {1.0f,0.0f,2.0f};
+        matrix4x4 transform = matrix4x4_from_transformation(translation, rotationMatrix);
+
+        matrix4x4 inverseTransfrom = inverse(transform);
+
+        std::cout << "Matrix: " << transform << "\n";
+        std::cout << "Inverse(Matrix): " << inverseTransfrom << "\n";
+        std::cout << "Inverse Test: " << matrix4x4_is_inverse(inverseTransfrom, transform) << "\n\n";
+    }
 
     std::cout << "-------------------Matrix4x4 Multiplication----------------------- \n \n";
 
@@ -123,21 +154,11 @@ int main() {
     std::cout << "-------------------Matrix3x3 from Quaternion----------------------- \n \n";
 
     {
-        quaternion q = quaternion_from_axis_angle(vector3{0.6f,0.5f,0.2f}, M_PI/2.0f);
+        quaternion q = {0.692537f, 0.0f, 0.0f, 0.721383f};
         std::cout << "Quaternion: " << q << "\n";
         std::cout << "Matrix3x3 from Quaternion:" << matrix3x3_from_quaternion(q) << "\n";
-        std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(q)) << "\n\n";
-
-        // quaternion p = quaternion_from_matrix3x3(matrix3x3_from_quaternion(q));
-        // std::cout << "Quaternion from Matirx3x3: " << to_string(p) << "\n";   
-        // std::cout << "Length: " << p.length() << "\n";   
-        // std::cout << "Axis: " << to_string(p.axis()) << "\n";   
-        // std::cout << "Angle: " << p.angle() << "\n\n";
-        
-        // std::cout << "Matrix3x3 from Quaternion: \n" << to_string_pretty(matrix3x3_from_quaternion(p)) << "\n";
-        // std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(p)) << "\n\n";  
-
-        
+        std::cout << "Determinant: " << determinant(matrix3x3_from_quaternion(q)) << "\n";
+        std::cout << "Orthonormal: " << matrix3x3_is_orthonormal(matrix3x3_from_quaternion(q)) << "\n\n";
     }
 
     std::cout << "-------------------Matrix3x3 Determinant----------------------- \n \n";
@@ -167,7 +188,7 @@ int main() {
         std::cout << "Matrix:" << m << "\n";
         std::cout << "Inverse:" << i << "\n";
         std::cout << "Product" << m*i << "\n";
-        std::cout << "Inverse Test: " << matrix3x3_is_inverse(i, m) << "\n";
+        std::cout << "Inverse Test: " << matrix3x3_is_inverse(i, m) << "\n\n";
 
     }
 
