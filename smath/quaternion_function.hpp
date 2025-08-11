@@ -33,6 +33,11 @@ namespace smath{
         return quaternion{q.x*factor, q.y*factor, q.z*factor, q.w*factor};
     }
 
+    // NOTE: this only works for quaternions of length 1 that represent rotations as this is the conjugate
+    inline quaternion inverse(const quaternion &q) {
+        return quaternion{-q.x, -q.y, -q.z, q.w};
+    }
+
     // TODO: Add rotate towards vector orientation? This one is weird 
     inline quaternion quaternion_add_vector(const quaternion &q, const vector3 &v) {
         return normalized(quaternion{
@@ -50,11 +55,6 @@ namespace smath{
             v.x*(2*q.x*q.z-2*q.w*q.y)+v.y*(2*q.w*q.x+2*q.y*q.z)+v.z*(q.w*q.w-q.x*q.x-q.y*q.y+q.z*q.z)
         };
     }
-
-    // TODO:
-    // inline quaternion quaternion_from_matrix3x3(const matrix3x3 &m) {
-
-    // }
 
     // reinterpet a vector3 as a quaternion TODO: intution
     inline quaternion quaternion_from_vector3(const vector3 &v) {

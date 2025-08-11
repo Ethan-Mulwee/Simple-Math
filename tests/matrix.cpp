@@ -116,16 +116,18 @@ int main() {
     std::cout << "-------------------Matrix4x4 Inverse----------------------- \n \n";
 
     {
-        quaternion rotation = quaternion_from_euler_angles_XYZ(1.0f,1.0f,0.0f);
-        matrix3x3 rotationMatrix = matrix3x3_from_quaternion(rotation);
-        vector3 translation = {1.0f,0.0f,2.0f};
-        matrix4x4 transform = matrix4x4_from_transformation(translation, rotationMatrix);
+        matrix4x4 matrix = {
+            0.1f, 5.2f, 1.2f, 0.6f,
+            0.5f, 0.1f, 2.5f, 1.2f,
+            3.4f, 1.1f, 0.6f, 0.2f,
+            0.1f, 0.6f, 0.8f, 2.4f
+        };
 
-        matrix4x4 inverseTransfrom = inverse(transform);
+        matrix4x4 inverseMatrix = inverse(matrix);
 
-        std::cout << "Matrix: " << transform << "\n";
-        std::cout << "Inverse(Matrix): " << inverseTransfrom << "\n";
-        std::cout << "Inverse Test: " << matrix4x4_is_inverse(inverseTransfrom, transform) << "\n\n";
+        std::cout << "Matrix: " << matrix << "\n";
+        std::cout << "Inverse(Matrix): " << inverseMatrix << "\n";
+        std::cout << "Inverse Test: " << matrix4x4_is_inverse(inverseMatrix, matrix) << "\n\n";
     }
 
     std::cout << "-------------------Matrix4x4 Multiplication----------------------- \n \n";
@@ -205,5 +207,28 @@ int main() {
         std::cout << "Orthonormal: " << matrix3x3_is_orthonormal(m) << "\n\n";
     }
 
+    std::cout << "-------------------Transformation Matrix Inverse Test----------------------- \n \n";
+
+    {
+        quaternion rotation = quaternion_from_euler_angles_XYZ(M_PI/2.0f,0.0f,0.0f);
+        matrix3x3 rotationMatrix = matrix3x3_from_quaternion(rotation);
+        matrix3x3 scaleMatrix = matrix3x3_from_diagonal(2.0f);  
+        vector3 translation = {1.0f,0.0f,2.0f};
+
+        matrix4x4 transform = matrix4x4_from_matrix3x3(rotationMatrix*scaleMatrix);
+        transform[0][3] = translation.x;
+        transform[1][3] = translation.y;
+        transform[2][3] = translation.z;
+
+        vector3 testVector = {0,0,1};
+
+        std::cout << "Vector: " << matrix4x4_transform_vector3(transform, testVector) << "\n";
+
+        matrix4x4 inverseTransfrom = inverse(transform);
+
+        std::cout << "Matrix: " << transform << "\n";
+        std::cout << "Inverse(Matrix): " << inverseTransfrom << "\n";
+        std::cout << "Inverse Test: " << matrix4x4_is_inverse(inverseTransfrom, transform) << "\n\n";
+    }
 
 }

@@ -1,10 +1,9 @@
-#ifndef SMATH_TRANSFORM
-#define SMATH_TRANSFORM
+#ifndef SMATH_TRANSFORM_TYPE
+#define SMATH_TRANSFORM_TYPE
 
 #include "vector_type.hpp"
 #include "quaternion_type.hpp"
-
-#include <cstddef>
+#include "matrix_type.hpp"
 
 namespace smath {
 

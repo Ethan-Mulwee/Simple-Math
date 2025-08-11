@@ -6,5 +6,6 @@
 #include "matrix_type.hpp"
 #include "euler_type.hpp"
 #include "axis_angle_type.hpp"
+#include "transform_type.hpp"
 
 #endif

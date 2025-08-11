@@ -39,7 +39,7 @@ int main() {
         std::cout << "Angle: " << q.angle() << "\n";
     }
 
-    std::cout << "\n ---------------------------Quaternion multiplcation--------------------------- \n \n";
+    std::cout << "\n ---------------------------Quaternion Multiplcation--------------------------- \n \n";
 
     {
         quaternion q = quaternion_from_axis_angle(vector3{1.0f,0.0f,0.0f}, M_PI/2.0f);
@@ -48,6 +48,16 @@ int main() {
         std::cout << "p: " << p << "\n\n";
 
         std::cout << "q*p: " << q*p << "\n";
+    }
+
+    std::cout << "\n ---------------------------Quaternion Inverse--------------------------- \n \n";
+
+    {
+        quaternion q = quaternion_from_axis_angle(vector3{1.0f,0.0f,0.0f}, M_PI/2.0f);
+        quaternion qInverse = inverse(q);
+        std::cout << "q: " << q << "\n";
+        std::cout << "inverse(q): " << qInverse << "\n";
+        std::cout << "q*inverse(q): " << q*qInverse << "\n";
     }
 
     std::cout << "\n";
