@@ -44,13 +44,21 @@ namespace smath {
         return os;
     }
 
-        std::ostream &operator <<(std::ostream &os, const quaternion &q) {
+    std::ostream &operator <<(std::ostream &os, const quaternion &q) {
         os << "(" 
         ANSI_COLOR_RED + std::to_string(q.x) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_GREEN + std::to_string(q.y) + ANSI_COLOR_RESET ", " 
         ANSI_COLOR_BLUE + std::to_string(q.z) + ANSI_COLOR_RESET ", "
         ANSI_COLOR_MAGENTA + std::to_string(q.w) + ANSI_COLOR_RESET
         "), length = " + std::to_string(q.length());
+        return os;
+    }
+
+    std::ostream &operator <<(std::ostream &os, const transform &t) {
+        os <<
+        "\n| translation: " << t.translation << "\n"
+        "| rotation: " << t.rotation << "\n"
+        "| scale: " << t.scale << "\n";
         return os;
     }
 

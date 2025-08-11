@@ -89,6 +89,13 @@ namespace smath {
         return vector3{v.x*s, v.y*s, v.z*s};
     }
 
+    inline vector3 operator/(const vector3 &v, const float s) {
+        return vector3{v.x/s, v.y/s, v.z/s};
+    }
+
+    inline vector3 operator/(const float s, const vector3 &v) {
+        return vector3{s/v.x, s/v.y, s/v.z};
+    }
 
     inline vector3 operator/(const vector3 &a, const vector3 &b) {
         return vector3{a.x/b.x, a.y/b.y, a.z/b.z};

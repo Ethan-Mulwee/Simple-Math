@@ -9,6 +9,7 @@ all:
 	$(MAKE) vector
 	$(MAKE) quaternion
 	$(MAKE) matrix
+	$(MAKE) transform
 
 vector:
 	g++ vector.cpp -o out/vector.out -I../smath -O2
@@ -30,8 +31,14 @@ stdout:
 	g++ stdout.cpp -o out/stdout.out -I../smath -O2
 	./out/stdout.out
 
+transform:
+	g++ transform.cpp -o out/transform.out -I../smath -O2
+	./out/transform.out
+
 clean:
 	rm out/matrix.out
 	rm out/quaternion.out
 	rm out/vector.out
 	rm out/preformance.out
+	rm out/stdout.out
+	rm out/transform.out

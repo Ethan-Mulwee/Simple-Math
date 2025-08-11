@@ -8,7 +8,7 @@
 namespace smath {
 
     struct transform {
-        vector3 position;
+        vector3 translation;
         quaternion rotation;
         vector3 scale;
     };
