@@ -25,6 +25,13 @@ int main() {
 
     std::cout << "Transformed Vector: " << transformedVector << "\n\n";
 
+    matrix4x4 transformationMatrix = matrix4x4_from_transform(t);
+    
+    std::cout << "Transform to Matrix: " << transformationMatrix << "\n";
+    std::cout << "Transformed Vector from Matrix: " << matrix4x4_transform_vector3(transformationMatrix, v) << "\n\n";
+
+    std::cout << "Matrix to Transform: " << transform_from_matrix4x4(transformationMatrix) << "\n";
+
     std::cout << "Inverse Transform: " << inverseTransform << "\n";
 
     std::cout << "Untransformed Vector: " << transform_transform_vector3(inverseTransform, transformedVector) << "\n";
