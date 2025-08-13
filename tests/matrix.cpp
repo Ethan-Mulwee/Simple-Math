@@ -207,6 +207,20 @@ int main() {
         std::cout << "Orthonormal: " << matrix3x3_is_orthonormal(m) << "\n\n";
     }
 
+    std::cout << "-------------------Matrix3x3 Orthogonal Test----------------------- \n \n";
+
+    {
+        matrix3x3 m = {
+            1.0f, 0.0f, 0.0f,
+            0.0f, 2.0f, 0.0f,
+            0.0f, 0.0f, 1.0f
+        };
+
+        std::cout << "Matrix:" << m << "\n";
+        std::cout << "Orthogonal: " << matrix3x3_is_orthogonal(m) << "\n";  
+        std::cout << "Orthonormal: " << matrix3x3_is_orthonormal(m) << "\n\n";  
+    }
+
     std::cout << "-------------------Transformation Matrix Inverse Test----------------------- \n \n";
 
     {

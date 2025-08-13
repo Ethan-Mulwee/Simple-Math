@@ -265,6 +265,22 @@ namespace smath {
         return matrix3x3_is_inverse(transpose(m), m);
     }
 
+    bool matrix3x3_is_orthogonal(const matrix3x3 &m, float epsilon) {
+        vector3 i = vector3_from_matrix3x3(m, 0);
+        vector3 j = vector3_from_matrix3x3(m, 1);
+        vector3 k = vector3_from_matrix3x3(m, 2);
+
+        float ij = dot(i,j);
+        float jk = dot(j,k);
+        float ik = dot(i,k);
+
+        bool one = (ij < 0.0f + epsilon && ij > 0.0 - epsilon);
+        bool two = (jk < 0.0f + epsilon && jk > 0.0 - epsilon);
+        bool three = (ik < 0.0f + epsilon && ik > 0.0 - epsilon);
+
+        return one && two && three;
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix4x4                                  */
     /* -------------------------------------------------------------------------- */

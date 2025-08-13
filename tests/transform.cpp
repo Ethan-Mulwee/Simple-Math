@@ -10,8 +10,8 @@ int main() {
 
     transform t = {
         .translation = vector3{1.0f,1.0f,2.0f},
-        .rotation = quaternion_from_euler_angles_XYZ(M_PI/2.0f,0.0f,0.0f),
-        .scale = vector3{1.0f,1.0f,1.0f}
+        .rotation = quaternion_from_euler_angles_XYZ(M_PI/2.0f,M_PI/3.0f,0.0f),
+        .scale = vector3{1.0f,2.0f,3.0f}
     };
 
     transform inverseTransform = inverse(t);
@@ -32,7 +32,20 @@ int main() {
 
     std::cout << "Matrix to Transform: " << transform_from_matrix4x4(transformationMatrix) << "\n";
 
-    std::cout << "Inverse Transform: " << inverseTransform << "\n";
+    matrix4x4 inverseTransformationMatrix = inverse(transformationMatrix);
 
-    std::cout << "Untransformed Vector: " << transform_transform_vector3(inverseTransform, transformedVector) << "\n";
+    
+    std::cout << "Inverse Matrix: " << inverseTransformationMatrix << "\n";
+
+    std::cout << "Inverse Test: " << matrix4x4_is_inverse(inverseTransformationMatrix, transformationMatrix) << "\n\n";
+
+    std::cout << "Othrogonal Test: " << matrix3x3_is_orthogonal(matrix3x3_from_matrix4x4(inverseTransformationMatrix)) << "\n";
+    
+    std::cout << "Inverse Matrix to Transform:" << transform_from_matrix4x4(inverseTransformationMatrix) << "\n";
+
+    std::cout << "Inverse Matrix Transfrom to Matrix" << matrix4x4_from_transform(transform_from_matrix4x4(inverseTransformationMatrix)) << "\n";
+
+    // std::cout << "Inverse Transform: " << inverseTransform << "\n";
+
+    // std::cout << "Untransformed Vector: " << transform_transform_vector3(inverseTransform1, transformedVector) << "\n";
 }

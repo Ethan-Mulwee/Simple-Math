@@ -82,6 +82,8 @@ namespace smath {
 
     inline bool matrix3x3_is_orthonormal(const matrix3x3 &m, float epsilon = 0.001f); 
 
+    inline bool matrix3x3_is_orthogonal(const matrix3x3 &m, float epsilon = 0.001f);
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix4x4                                  */
     /* -------------------------------------------------------------------------- */
