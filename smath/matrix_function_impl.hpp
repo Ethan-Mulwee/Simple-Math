@@ -232,6 +232,13 @@ namespace smath {
         };
     }
 
+    matrix3x3 matrix3x3_normalize_basis(const matrix3x3 &m) {
+        vector3 ihat = normalized(vector3_from_matrix3x3(m,0));
+        vector3 jhat = normalized(vector3_from_matrix3x3(m,1));
+        vector3 khat = normalized(vector3_from_matrix3x3(m,2));
+        return matrix3x3_from_columns(ihat, jhat, khat);
+    }
+
     bool matrix3x3_is_inverse(const matrix3x3 inverse, const matrix3x3 matrix, float epsilon) {
         matrix3x3 product = matrix*inverse;
         matrix3x3 identity = matrix3x3_from_identity();

@@ -7,15 +7,25 @@
 
 namespace smath {
 
-    // TODO: correctly invert scale
-    inline transform inverse(const transform &t) {
-        transform inverseTransform;
-        inverseTransform.scale = 1.0f / t.scale;
-        inverseTransform.rotation = inverse(t.rotation);
-        // inverseTransform.translation = -1.0f * quaternion_transform_vector(inverseTransform.rotation, inverseTransform.scale * t.translation);
-        inverseTransform.translation = -1.0f * quaternion_transform_vector(inverseTransform.rotation, t.translation);
+    // // TODO: correctly invert scale
+    // actually nah this is a nightmare and expensive
+    // inline transform inverse(const transform &t) {
+    //     transform inverseTransform;
+    //     inverseTransform.scale = 1.0f / t.scale;
+    //     inverseTransform.rotation = inverse(t.rotation);
+    //     // inverseTransform.translation = -1.0f * quaternion_transform_vector(inverseTransform.rotation, inverseTransform.scale * t.translation);
+    //     inverseTransform.translation = -1.0f * quaternion_transform_vector(inverseTransform.rotation, t.translation);
 
-        return inverseTransform;
+    //     return inverseTransform;
+    // }
+
+    inline vector3 transform_inverse_transform_vector3(const transform &t, const vector3 &v) {
+        vector3 transformedVector = v;
+        transformedVector = transformedVector - t.translation;
+        transformedVector = quaternion_transform_vector(inverse(t.rotation), transformedVector);
+        transformedVector = transformedVector / t.scale;
+
+        return transformedVector;
     }
 
     inline vector3 transform_transform_vector3(const transform &t, const vector3 &v) {
@@ -45,9 +55,9 @@ namespace smath {
 
     // NOTE: assumes w is 1 currently
     inline transform transform_from_matrix4x4(const matrix4x4 &m) {
-        vector3 i = vector3_from_matrix4x4(m, 0); 
-        vector3 j = vector3_from_matrix4x4(m, 1); 
-        vector3 k = vector3_from_matrix4x4(m, 2); 
+        const vector3 i = vector3_from_matrix4x4(m, 0); 
+        const vector3 j = vector3_from_matrix4x4(m, 1); 
+        const vector3 k = vector3_from_matrix4x4(m, 2); 
 
         vector3 scale = {i.length(), j.length(), k.length()};
         vector3 translation = vector3_from_matrix4x4(m,3);

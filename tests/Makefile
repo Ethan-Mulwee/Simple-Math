@@ -35,6 +35,11 @@ transform:
 	g++ transform.cpp -o out/transform.out -I../smath -O2
 	./out/transform.out
 
+playground:
+	mkdir -p out/
+	g++ playground.cpp -o out/playground.out -I../smath -O2
+	./out/playground.out
+
 clean:
 	rm out/matrix.out
 	rm out/quaternion.out

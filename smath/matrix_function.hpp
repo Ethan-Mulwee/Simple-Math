@@ -77,6 +77,8 @@ namespace smath {
 
     inline matrix3x3 matrix3x3_from_diagonal(const float s);
 
+    inline matrix3x3 matrix3x3_normalize_basis(const matrix3x3 &m);
+
     // Checks if i is an inverse of m
     inline bool matrix3x3_is_inverse(const matrix3x3 inverse, const matrix3x3 matrix, float epsilon = 0.001f);
 
