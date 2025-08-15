@@ -310,6 +310,10 @@ namespace smath {
         }
     }
 
+    void operator*=(matrix4x4 &a, const matrix4x4 &b) {
+        a = a * b;
+    }
+
     matrix4x4 operator*(const float s, const matrix4x4 &m) {
         matrix4x4 result;
         for (int i = 0; i < 4; i++) {
@@ -554,6 +558,29 @@ namespace smath {
             0, 0, 1, v.z,
             0, 0, 0, 1
         };
+    }
+
+    matrix4x4 matrix4x4_from_scale(const float s) {
+        return matrix4x4{
+            s,    0.0f, 0.0f, 0.0f,
+            0.0f, s,    0.0f, 0.0f,
+            0.0f, 0.0f, s,    0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f
+        };
+    }
+
+    matrix4x4 matrix4x4_from_scale(const vector3 &s)
+    {
+        return matrix4x4{
+            s.x,  0.0f, 0.0f, 0.0f,
+            0.0f, s.y,  0.0f, 0.0f,
+            0.0f, 0.0f, s.z,  0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f
+        };
+    }
+
+    matrix4x4 matrix4x4_from_rotation(const quaternion &q) {
+        return matrix4x4_from_matrix3x3(matrix3x3_from_quaternion(q));
     }
 
     matrix4x4 matrix4x4_from_transformation(const vector3 &translation, const matrix3x3 &rotation) {

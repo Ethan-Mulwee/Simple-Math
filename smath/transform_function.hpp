@@ -53,27 +53,27 @@ namespace smath {
         return transformMatrix;
     }
 
-    // NOTE: assumes w is 1 currently
-    inline transform transform_from_matrix4x4(const matrix4x4 &m) {
-        const vector3 i = vector3_from_matrix4x4(m, 0); 
-        const vector3 j = vector3_from_matrix4x4(m, 1); 
-        const vector3 k = vector3_from_matrix4x4(m, 2); 
+    // Decompose matrix4x4 note this is very expensive and doesn't always work
+    // inline transform transform_from_matrix4x4(const matrix4x4 &m) {
+    //     const vector3 i = vector3_from_matrix4x4(m, 0); 
+    //     const vector3 j = vector3_from_matrix4x4(m, 1); 
+    //     const vector3 k = vector3_from_matrix4x4(m, 2); 
 
-        vector3 scale = {i.length(), j.length(), k.length()};
-        vector3 translation = vector3_from_matrix4x4(m,3);
-        matrix3x3 rotationMatrix = matrix3x3_from_columns(
-            normalized(i),
-            normalized(j),
-            normalized(k)
-        );
-        quaternion rotation = quaternion_from_matrix3x3(rotationMatrix);
+    //     vector3 scale = {i.length(), j.length(), k.length()};
+    //     vector3 translation = vector3_from_matrix4x4(m,3);
+    //     matrix3x3 rotationMatrix = matrix3x3_from_columns(
+    //         normalized(i),
+    //         normalized(j),
+    //         normalized(k)
+    //     );
+    //     quaternion rotation = quaternion_from_matrix3x3(rotationMatrix);
 
-        return transform{
-            .translation = translation,
-            .rotation = rotation,
-            .scale = scale
-        };
-    }
+    //     return transform{
+    //         .translation = translation,
+    //         .rotation = rotation,
+    //         .scale = scale
+    //     };
+    // }
 
 }
 
