@@ -217,12 +217,12 @@ namespace smath {
         vector3 jhat = normalized(v);
 
         if (abs(jhat.y) < abs(jhat.z)) {
-            khat = vector3{-jhat.z, 0, v.x};
-            ihat = cross(jhat, khat);
+            khat = vector3{-jhat.z, 0, jhat.x};
+            ihat = cross(khat, jhat);
         }
         else {
             ihat = vector3{-jhat.y, jhat.x, 0};
-            khat = cross(jhat, ihat);
+            khat = cross(ihat, jhat);
         }
 
         return matrix3x3_from_columns(ihat, jhat, khat);
