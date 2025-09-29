@@ -211,6 +211,40 @@ namespace smath {
         return matrix3x3_from_columns(ihat, jhat, khat);
     }
 
+    matrix3x3 matrix3x3_from_jhat(const vector3 &v) {
+        vector3 ihat, khat;
+
+        vector3 jhat = normalized(v);
+
+        if (abs(v.y) < abs(v.z)) {
+            khat = vector3{-v.z, 0, v.x};
+            ihat = cross(v, khat);
+        }
+        else {
+            ihat = vector3{-v.y, v.x, 0};
+            khat = cross(v, ihat);
+        }
+
+        return matrix3x3_from_columns(ihat, jhat, khat);
+    }
+
+    matrix3x3 matrix3x3_from_khat(const vector3 &v) {
+        vector3 ihat, jhat;
+
+        vector3 khat = normalized(v);
+
+        if (abs(v.y) < abs(v.z)) {
+            jhat = vector3{-v.z, 0, v.x};
+            ihat = cross(v, jhat);
+        }
+        else {
+            ihat = vector3{-v.y, v.x, 0};
+            jhat = cross(v, ihat);
+        }
+
+        return matrix3x3_from_columns(ihat, jhat, khat);
+    }
+
     // TODO:
     // inline matrix3x3 matrix3x3_from_euler(const euler_xyz &e) {
 
