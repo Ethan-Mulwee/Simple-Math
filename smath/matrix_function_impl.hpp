@@ -199,13 +199,13 @@ namespace smath {
 
         vector3 ihat = normalized(v);
 
-        if (abs(v.y) < abs(v.z)) {
-            khat = vector3{-v.z, 0, v.x};
-            jhat = cross(v, khat);
+        if (abs(ihat.y) < abs(ihat.z)) {
+            khat = vector3{-ihat.z, 0, ihat.x};
+            jhat = cross(ihat, khat);
         }
         else {
             jhat = vector3{-v.y, v.x, 0};
-            khat = cross(v, jhat);
+            khat = cross(ihat, jhat);
         }
 
         return matrix3x3_from_columns(ihat, jhat, khat);
@@ -216,13 +216,13 @@ namespace smath {
 
         vector3 jhat = normalized(v);
 
-        if (abs(v.y) < abs(v.z)) {
-            khat = vector3{-v.z, 0, v.x};
-            ihat = cross(v, khat);
+        if (abs(jhat.y) < abs(jhat.z)) {
+            khat = vector3{-jhat.z, 0, v.x};
+            ihat = cross(jhat, khat);
         }
         else {
-            ihat = vector3{-v.y, v.x, 0};
-            khat = cross(v, ihat);
+            ihat = vector3{-jhat.y, jhat.x, 0};
+            khat = cross(jhat, ihat);
         }
 
         return matrix3x3_from_columns(ihat, jhat, khat);
@@ -233,13 +233,13 @@ namespace smath {
 
         vector3 khat = normalized(v);
 
-        if (abs(v.y) < abs(v.z)) {
-            jhat = vector3{-v.z, 0, v.x};
-            ihat = cross(v, jhat);
+        if (abs(khat.y) < abs(khat.z)) {
+            jhat = vector3{-khat.z, 0, khat.x};
+            ihat = cross(khat, jhat);
         }
         else {
-            ihat = vector3{-v.y, v.x, 0};
-            jhat = cross(v, ihat);
+            ihat = vector3{-khat.y, khat.x, 0};
+            jhat = cross(khat, ihat);
         }
 
         return matrix3x3_from_columns(ihat, jhat, khat);
