@@ -65,6 +65,15 @@ namespace smath {
 
     inline matrix3x3 matrix3x3_from_euler(const euler_xyz &e);
 
+    // Creates a 3x3 orthonormal matrix from ihat vector
+    inline matrix3x3 matrix3x3_from_ihat(const vector3 &v); 
+
+    // Creates a 3x3 orthonormal matrix from jhat vector
+    inline matrix3x3 matrix3x3_from_jhat(const vector3 &v); 
+
+    // Creates a 3x3 orthonormal matrix from khat vector
+    inline matrix3x3 matrix3x3_from_khat(const vector3 &v); 
+
     // Simple change of basis function, NOTE: this uses a inverse which could be optimzied away as a tranpose in the case of a rotation matrix
     inline matrix3x3 matrix3x3_change_basis(const matrix3x3 &matrix, const matrix3x3 &changeOfBasisMatrix);
 

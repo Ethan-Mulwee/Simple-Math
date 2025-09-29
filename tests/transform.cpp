@@ -14,7 +14,7 @@ int main() {
         .scale = vector3{1.0f,2.0f,3.0f}
     };
 
-    transform inverseTransform = inverse(t);
+    // transform inverseTransform = inverse(t);
 
     vector3 v = {0.0f,1.0f,0.0f};
 
@@ -32,7 +32,7 @@ int main() {
     std::cout << "Transformed Vector from Matrix: " << matrix4x4_transform_vector3(transformationMatrix, v) << "\n\n";
 
 
-    std::cout << "Matrix to Transform: " << transform_from_matrix4x4(transformationMatrix) << "\n";
+    // std::cout << "Matrix to Transform: " << transform_from_matrix4x4(transformationMatrix) << "\n";
 
     matrix4x4 inverseTransformationMatrix = inverse(transformationMatrix);
 
@@ -43,9 +43,9 @@ int main() {
 
     std::cout << "Othrogonal Test: " << matrix3x3_is_orthogonal(matrix3x3_from_matrix4x4(inverseTransformationMatrix)) << "\n\n";
     
-    std::cout << "Inverse Matrix to Transform:" << transform_from_matrix4x4(inverseTransformationMatrix) << "\n";
+    // std::cout << "Inverse Matrix to Transform:" << transform_from_matrix4x4(inverseTransformationMatrix) << "\n";
 
-    std::cout << "Inverse Matrix Transfrom to Matrix" << matrix4x4_from_transform(transform_from_matrix4x4(inverseTransformationMatrix)) << "\n";
+    // std::cout << "Inverse Matrix Transfrom to Matrix" << matrix4x4_from_transform(transform_from_matrix4x4(inverseTransformationMatrix)) << "\n";
 
     // std::cout << "Inverse Transform: " << inverseTransform << "\n";
 
