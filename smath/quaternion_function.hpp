@@ -41,10 +41,10 @@ namespace smath{
     // TODO: Add rotate towards vector orientation? This one is weird 
     inline quaternion quaternion_add_vector(const quaternion &q, const vector3 &v) {
         return normalized(quaternion{
-            q.w + 0.5f * (-v.x * q.x - v.y * q.y - v.z * q.z),
             q.x + 0.5f * (v.x * q.w + v.y * q.z - v.z * q.y),
             q.y + 0.5f * (v.y * q.w + v.z * q.x - v.x * q.z),
-            q.z * 0.5f * (v.z * q.w + v.x * q.y - v.y * q.x)
+            q.z * 0.5f * (v.z * q.w + v.x * q.y - v.y * q.x),
+            q.w + 0.5f * (-v.x * q.x - v.y * q.y - v.z * q.z)
         });
     }
 
