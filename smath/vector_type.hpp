@@ -24,7 +24,12 @@ namespace smath {
     };
 
     struct vector3 {
-        float x,y,z;
+        union {
+            float data[3];
+            struct {
+                float x,y,z;
+            };
+        };
     
         inline float length() const {
             return sqrt(x*x+y*y+z*z);

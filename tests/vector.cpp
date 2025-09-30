@@ -17,6 +17,9 @@ int main() {
     std::cout << "b = " << b << "\n";
     std::cout << "a * b = " << a*b << "\n";
 
+    std::cout << "a.y: " << a.y << "\n";
+    std::cout << "a.data[1]: " << a.data[1] << "\n";
+
     std::cout << "\n";
 
 }
