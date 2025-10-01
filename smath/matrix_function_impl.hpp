@@ -199,7 +199,7 @@ namespace smath {
 
         vector3 ihat = normalized(v);
 
-        if (abs(ihat.y) < abs(ihat.z)) {
+        if (std::abs(ihat.y) < std::abs(ihat.z)) {
             khat = vector3{-ihat.z, 0, ihat.x};
             jhat = cross(ihat, khat);
         }
@@ -216,7 +216,7 @@ namespace smath {
 
         vector3 jhat = normalized(v);
 
-        if (abs(jhat.y) < abs(jhat.z)) {
+        if (std::abs(jhat.y) < std::abs(jhat.z)) {
             khat = vector3{-jhat.z, 0, jhat.x};
             ihat = cross(khat, jhat);
         }
@@ -233,7 +233,7 @@ namespace smath {
 
         vector3 khat = normalized(v);
 
-        if (abs(khat.y) < abs(khat.z)) {
+        if (std::abs(khat.y) < std::abs(khat.z)) {
             jhat = vector3{-khat.z, 0, khat.x};
             ihat = cross(khat, jhat);
         }
