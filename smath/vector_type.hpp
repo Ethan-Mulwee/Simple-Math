@@ -25,10 +25,10 @@ namespace smath {
 
     struct vector3 {
         union {
-            float data[3];
             struct {
                 float x,y,z;
             };
+            float data[3];
         };
     
         inline float length() const {
