@@ -159,6 +159,14 @@ namespace smath {
         return vector4{v.x*s, v.y*s, v.z*s, v.w*s};
     }
 
+    inline void operator*=(vector4 &v, const float s) {
+        v.x *= s; v.y *= s; v.z *= s; v.w *= s;
+    }
+
+    inline void operator/=(vector4 &v, const float s) {
+        v.x /= s; v.y /= s; v.z /= s; v.w /= s;
+    }
+
     // Scale vector by a scalar
     inline vector4 operator*(const float s, const vector4 &v) {
         return vector4{v.x*s, v.y*s, v.z*s, v.w*s};
