@@ -10,6 +10,7 @@ all:
 	$(MAKE) quaternion
 	$(MAKE) matrix
 	$(MAKE) transform
+	$(MAKE) intersection
 
 vector:
 	g++ vector.cpp -o out/vector.out -I../smath -O2
@@ -34,6 +35,10 @@ stdout:
 transform:
 	g++ transform.cpp -o out/transform.out -I../smath -O2
 	./out/transform.out
+
+intersection:
+	g++ intersection.cpp -o out/intersection.out -I../smath -O2
+	./out/intersection.out
 
 playground:
 	mkdir -p out/
