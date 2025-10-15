@@ -26,10 +26,13 @@ namespace smath {
     }
 
     std::ostream &operator <<(std::ostream &os, const vector3 &v) {
+        const char* xSpace = std::signbit(v.x) ? "" : " ";
+        const char* ySpace = std::signbit(v.y) ? "" : " ";
+        const char* zSpace = std::signbit(v.z) ? "" : " ";
         os << "(" 
-        ANSI_COLOR_RED + std::to_string(v.x) + ANSI_COLOR_RESET ", " 
-        ANSI_COLOR_GREEN + std::to_string(v.y) + ANSI_COLOR_RESET ", " 
-        ANSI_COLOR_BLUE + std::to_string(v.z) + ANSI_COLOR_RESET
+        ANSI_COLOR_RED   + (xSpace + std::to_string(v.x)) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_GREEN + (ySpace + std::to_string(v.y)) + ANSI_COLOR_RESET ", " 
+        ANSI_COLOR_BLUE  + (zSpace + std::to_string(v.z)) + ANSI_COLOR_RESET
         ")";
         return os;
     }

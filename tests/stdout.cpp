@@ -10,11 +10,13 @@ int main() {
 
     vector2 a = {1,2};
     vector3 b = {1,2,3};
-    vector4 c = {1,2,3,4};
+    vector3 c = {-1,2,-3};
+    vector4 d = {1,2,3,4};
 
     std::cout << "a = " << a << "\n";
     std::cout << "b = " << b << "\n";
-    std::cout << "c = " << c << "\n\n";
+    std::cout << "c = " << c << "\n";
+    std::cout << "d = " << d << "\n\n";
 
     matrix2x2 m2x2 = {
         1, 2,
