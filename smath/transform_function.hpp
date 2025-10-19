@@ -46,9 +46,9 @@ namespace smath {
         };
 
         matrix4x4 transformMatrix = matrix4x4_from_matrix3x3(rotationMatrix*scaleMatrix);
-        transformMatrix[0][3] = t.translation.x;
-        transformMatrix[1][3] = t.translation.y;
-        transformMatrix[2][3] = t.translation.z;
+        transformMatrix[3][0] = t.translation.x;
+        transformMatrix[3][1] = t.translation.y;
+        transformMatrix[3][2] = t.translation.z;
 
         return transformMatrix;
     }
