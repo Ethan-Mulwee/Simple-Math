@@ -66,15 +66,16 @@ int main() {
     std::cout << "-------------------Matrix2x2 Inverse----------------------- \n \n";
 
     {
-    std::cout << "Matrix2x2 A: \n";
-    matrix2x2 matrix2x2A = {
-        1, 2,
-        7, 4
-    };
-    std::cout << matrix2x2A << "\n \n";
-    
-    std::cout << "Matrix2x2 A inverse \n";
-    std::cout << inverse(matrix2x2A) << "\n \n";
+        std::cout << "Matrix2x2 A: \n";
+        matrix2x2 matrix2x2A = {
+            1, 2,
+            7, 4
+        };
+        std::cout << matrix2x2A << "\n \n";
+        
+        std::cout << "Matrix2x2 A inverse \n";
+        std::cout << inverse(matrix2x2A) << "\n \n";
+        std::cout << "Inverse Test: " << matrix2x2_is_inverse(inverse(matrix2x2A), matrix2x2A) << "\n\n";
     }
 
     std::cout << "-------------------Matrix2x2 Change of basis----------------------- \n \n";

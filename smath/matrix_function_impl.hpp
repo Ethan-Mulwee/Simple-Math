@@ -69,6 +69,30 @@ namespace smath {
         return inverse(b)*m*b;
     }
 
+    matrix2x2 matrix2x2_from_identity() {
+        return matrix2x2 {
+            1, 0,
+            0 ,1
+        };
+    }
+
+    bool matrix2x2_is_inverse(const matrix2x2 inverse, const matrix2x2 matrix, float epsilon) {
+        matrix2x2 product = matrix*inverse;
+        matrix2x2 identity = matrix2x2_from_identity();
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                bool upperBound = product[i][j] < identity[i][j] + epsilon;
+                bool lowerBound = product[i][j] > identity[i][j] - epsilon;
+
+                if (!(upperBound && lowerBound))
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                 matrix3x3                                  */
     /* -------------------------------------------------------------------------- */
