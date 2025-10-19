@@ -113,7 +113,7 @@ namespace smath {
         };
     }
 
-    inline vector3 normalized(const vector3 &v) {
+    inline vector3 normalize(const vector3 &v) {
         float f = 1.0f/v.length();
         return vector3{v.x*f, v.y*f, v.z*f};
     }

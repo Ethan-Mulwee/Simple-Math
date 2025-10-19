@@ -151,10 +151,10 @@ namespace smath {
         }
 
         os <<
-                "\n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[0][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[0][3] + ANSI_COLOR_RESET "| \n" +
-                    "|" ANSI_COLOR_RED + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[1][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[1][3] + ANSI_COLOR_RESET "| \n" +
-                    "|" ANSI_COLOR_RED + strings[2][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[2][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[2][3] + ANSI_COLOR_RESET "| \n" +
-                    "|" ANSI_COLOR_RED + strings[3][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[3][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[3][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[3][3] + ANSI_COLOR_RESET "| \n";
+                "\n""|" ANSI_COLOR_RED + strings[0][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][0] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][0] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[3][0] + ANSI_COLOR_RESET "| \n" +
+                    "|" ANSI_COLOR_RED + strings[0][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][1] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][1] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[3][1] + ANSI_COLOR_RESET "| \n" +
+                    "|" ANSI_COLOR_RED + strings[0][2] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][2] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][2] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[3][2] + ANSI_COLOR_RESET "| \n" +
+                    "|" ANSI_COLOR_RED + strings[0][3] + ANSI_COLOR_RESET ", " ANSI_COLOR_GREEN + strings[1][3] + ANSI_COLOR_RESET ", " ANSI_COLOR_BLUE + strings[2][3] + ANSI_COLOR_RESET + ", " ANSI_COLOR_MAGENTA + strings[3][3] + ANSI_COLOR_RESET "| \n";
         return os;
     }
 

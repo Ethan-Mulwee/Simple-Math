@@ -72,6 +72,7 @@ namespace smath {
                 float x, y, z, w;
             };
             float data[4];
+            vector3 xyz;
         };
 
         inline float length() const {

@@ -28,7 +28,7 @@ namespace smath{
         return quaternion{q.x*s, q.y*s, q.z*s, q.w*s};
     }
 
-    inline quaternion normalized(const quaternion &q) {
+    inline quaternion normalize(const quaternion &q) {
         float factor = 1.0f/q.length();
         return quaternion{q.x*factor, q.y*factor, q.z*factor, q.w*factor};
     }
@@ -40,7 +40,7 @@ namespace smath{
 
     // TODO: Add rotate towards vector orientation? This one is weird 
     inline quaternion quaternion_add_vector(const quaternion &q, const vector3 &v) {
-        return normalized(quaternion{
+        return normalize(quaternion{
             q.x + 0.5f * (v.x * q.w + v.y * q.z - v.z * q.y),
             q.y + 0.5f * (v.y * q.w + v.z * q.x - v.x * q.z),
             q.z * 0.5f * (v.z * q.w + v.x * q.y - v.y * q.x),
@@ -64,7 +64,7 @@ namespace smath{
     inline quaternion quaternion_from_axis_angle(const vector3 &axis, const float angle) {
         quaternion result;
         
-        vector3 axisNormalized = normalized(axis); 
+        vector3 axisNormalized = normalize(axis); 
         result.w = cosf(angle/2.0f);
         float s = sinf(angle/2.0f);
         result.x = s*axisNormalized.x;

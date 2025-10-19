@@ -11,8 +11,6 @@ namespace smath {
     /*                                  matrix2x2                                 */
     /* -------------------------------------------------------------------------- */
 
-    inline matrix2x2 matrix2x2_from_columns(const vector2 &x, const vector2 &y);
-
     inline void operator*=(matrix2x2 &m, const float s);
 
     inline matrix2x2 operator*(const matrix2x2 &m, const float s);
@@ -27,9 +25,9 @@ namespace smath {
 
     inline matrix2x2 inverse(const matrix2x2 &m);
 
-    inline vector2 vector2_from_matrix2x2(const matrix2x2 &m, const size_t i);
-
     inline vector2 matrix2x2_transform_vector2(const matrix2x2 &m, const vector2 &v);
+
+    inline vector2 operator*(const matrix2x2 &m, const vector2 &v);
 
     inline matrix2x2 matrix2x2_change_basis(const matrix2x2 &m, const matrix2x2 &b);
 
@@ -38,9 +36,6 @@ namespace smath {
     /* -------------------------------------------------------------------------- */
     /*                                 matrix3x3                                  */
     /* -------------------------------------------------------------------------- */
-
-    // Construct matrix from column vectors
-    inline matrix3x3 matrix3x3_from_columns(const vector3 &x, const vector3 &y, const vector3 &z);
     
     inline void operator*=(matrix3x3 &m, const float s);
     
@@ -56,10 +51,9 @@ namespace smath {
     
     inline matrix3x3 inverse(const matrix3x3 &m);
 
-    // Get column vector
-    inline vector3 vector3_from_matrix3x3(const matrix3x3 &m, const size_t i);
-
     inline vector3 matrix3x3_transform_vector3(const matrix3x3 &m, const vector3 &v);
+
+    inline vector3 operator*(const matrix3x3 &m, const vector3 &v);
 
     inline matrix3x3 matrix3x3_from_quaternion(const quaternion &q);
 
@@ -99,9 +93,6 @@ namespace smath {
     /*                                 matrix4x4                                  */
     /* -------------------------------------------------------------------------- */
 
-
-    inline matrix4x4 matrix4x4_from_columns(vector4 x, vector4 y, vector4 z, vector4 w);
-
     inline void operator*=(matrix4x4 &m, const float s);
 
     inline void operator*=(matrix4x4 &a, const matrix4x4 &b);
@@ -122,14 +113,11 @@ namespace smath {
     // check if in the case that you have a 3x3 rot mat and a position that inverting is not much faster via transpose?
     inline matrix4x4 invert_transform(const matrix4x4 &m);
 
-    // Get column vector
-    inline vector3 vector3_from_matrix4x4(const matrix4x4 &m, const size_t i);
-
-    inline vector4 vector4_from_matrix4x4(const matrix4x4 &m, const size_t i);
-
     inline vector3 matrix4x4_transform_vector3(const matrix4x4 &m, const vector3 &v);
 
     inline vector4 matrix4x4_transform_vector4(const matrix4x4 &m, const vector4 &v);
+
+    inline vector4 operator*(const matrix4x4 &m, const vector4 &v);
 
     inline matrix4x4 matrix4x4_from_perspective(float fovy, float aspect, float zNear, float zFar);
 

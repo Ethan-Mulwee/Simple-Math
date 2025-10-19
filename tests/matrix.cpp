@@ -249,9 +249,9 @@ int main() {
 
     {
         matrix3x3 a = {
-            2.4f, 1.2f, 0.5f,
-            0.1f, 0.0f, 4.6f,
-            104.0f, 20.0f, 0.15f
+            vector3{2.4f, 1.2f, 0.5f},
+            vector3{0.1f, 0.0f, 4.6f},
+            vector3{4.0f, 0.5f, 0.5f}
         };
         std::cout << a << "\n";
         std::cout << "ihat: " << a.i << "\n";
