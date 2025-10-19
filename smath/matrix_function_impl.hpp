@@ -73,11 +73,11 @@ namespace smath {
     /*                                 matrix3x3                                  */
     /* -------------------------------------------------------------------------- */
     
-    inline void operator*=(matrix3x3 &m, const float s) {
+    void operator*=(matrix3x3 &m, const float s) {
         m.i *= s; m.j *= s; m.k *= s;
     }
     
-    inline matrix3x3 operator*(const matrix3x3 &m, const float s) {
+    matrix3x3 operator*(const matrix3x3 &m, const float s) {
         return matrix3x3{m.i*s, m.j*s, m.k*s,};
     }
 
@@ -85,7 +85,7 @@ namespace smath {
         return matrix3x3{m.i*s, m.j*s, m.k*s};
     }
 
-    inline matrix3x3 operator*(const matrix3x3 &a, const matrix3x3 &b) {
+    matrix3x3 operator*(const matrix3x3 &a, const matrix3x3 &b) {
 
         vector3 ihat = a * b.i;
         vector3 jhat = a * b.j;
@@ -94,7 +94,7 @@ namespace smath {
         return matrix3x3{ihat, jhat, khat};
     }
     
-    inline float determinant(const matrix3x3 &m) {
+    float determinant(const matrix3x3 &m) {
         // a(ei-fh)
         float t1 = m[0][0]*(m[1][1]*m[2][2]-m[2][1]*m[1][2]);
         // b(di-fg)
@@ -105,7 +105,7 @@ namespace smath {
         return t1-t2+t3;
     }
 
-    inline matrix3x3 transpose(const matrix3x3 &m) {
+    matrix3x3 transpose(const matrix3x3 &m) {
         return {
             m[0][0], m[0][1], m[0][2],
             m[1][0], m[1][1], m[1][2],
@@ -113,7 +113,7 @@ namespace smath {
         };
     }
     
-    inline matrix3x3 inverse(const matrix3x3 &m) {
+    matrix3x3 inverse(const matrix3x3 &m) {
         // took this from glm
         float OneOverDeterminant = 1.0f / (
             +m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1])
@@ -136,21 +136,21 @@ namespace smath {
         return inverse;
     }
 
-    inline vector3 matrix3x3_transform_vector3(const matrix3x3 &m, const vector3 &v) {
+    vector3 matrix3x3_transform_vector3(const matrix3x3 &m, const vector3 &v) {
         vector3 x = v.x*m.i;
         vector3 y = v.y*m.j;
         vector3 z = v.z*m.k;
         return x+y+z;
     }
 
-    inline vector3 operator*(const matrix3x3 &m, const vector3 &v) {
+    vector3 operator*(const matrix3x3 &m, const vector3 &v) {
         vector3 x = v.x*m.i;
         vector3 y = v.y*m.j;
         vector3 z = v.z*m.k;
         return x+y+z;
     }
 
-    inline matrix3x3 matrix3x3_from_quaternion(const quaternion &q) {
+    matrix3x3 matrix3x3_from_quaternion(const quaternion &q) {
         matrix3x3 m;
 
         // i hat
@@ -221,7 +221,7 @@ namespace smath {
     }
 
     // TODO:
-    // inline matrix3x3 matrix3x3_from_euler(const euler_xyz &e) {
+    // matrix3x3 matrix3x3_from_euler(const euler_xyz &e) {
 
     // }
 
@@ -234,7 +234,7 @@ namespace smath {
         return transpose(b)*m*b;
     }
 
-    inline matrix3x3 matrix3x3_from_matrix4x4(const matrix4x4 &m) {
+    matrix3x3 matrix3x3_from_matrix4x4(const matrix4x4 &m) {
         return matrix3x3{
             m[0][0], m[1][0], m[2][0],
             m[0][1], m[1][1], m[2][1],
@@ -331,7 +331,7 @@ namespace smath {
         return matrix4x4{m.i*s, m.j*s, m.k*s, m.l*s};
     }
 
-    inline matrix4x4 operator*(const matrix4x4 &a, const matrix4x4 &b)
+    matrix4x4 operator*(const matrix4x4 &a, const matrix4x4 &b)
     {
 
         vector4 ihat = matrix4x4_transform_vector4(a, b.i);
@@ -342,7 +342,7 @@ namespace smath {
         return matrix4x4{ihat, jhat, khat, lhat};
     }
 
-    inline float determinant(const matrix4x4 &m) {
+    float determinant(const matrix4x4 &m) {
         return 
             -m[0][2]*m[1][1]*m[2][0]+
             m[0][1]*m[1][2]*m[2][0]+
@@ -352,7 +352,7 @@ namespace smath {
             m[0][0]*m[1][1]*m[2][2];
     }    
 
-    inline matrix4x4 transpose(const matrix4x4 &m) {
+    matrix4x4 transpose(const matrix4x4 &m) {
         return {
             m[0][0], m[1][0], m[2][0], m[3][0],
             m[0][1], m[1][1], m[2][1], m[3][1],
@@ -491,7 +491,7 @@ namespace smath {
         return invOut;
     }
 
-    inline matrix4x4 invert_transform(const matrix4x4 &m) {
+    matrix4x4 invert_transform(const matrix4x4 &m) {
         matrix3x3 rotation = matrix3x3_from_matrix4x4(m);
         matrix3x3 rotationInverse = transpose(rotation);
 
@@ -501,7 +501,7 @@ namespace smath {
         return matrix4x4_from_transformation(translationInverse, rotationInverse);
     }
 
-    inline vector3 matrix4x4_transform_vector3(const matrix4x4 &m, const vector3 &v) {
+    vector3 matrix4x4_transform_vector3(const matrix4x4 &m, const vector3 &v) {
         vector3 x = (v.x*m.i).xyz;
         vector3 y = (v.y*m.j).xyz;
         vector3 z = (v.z*m.k).xyz;
@@ -510,7 +510,7 @@ namespace smath {
         return x+y+z+w;
     }
 
-    inline vector4 matrix4x4_transform_vector4(const matrix4x4 &m, const vector4 &v) {
+    vector4 matrix4x4_transform_vector4(const matrix4x4 &m, const vector4 &v) {
         vector4 x = v.x*m.i;
         vector4 y = v.y*m.j;
         vector4 z = v.z*m.k;
@@ -519,7 +519,7 @@ namespace smath {
         return x+y+z+w;
     }
 
-    inline vector4 operator*(const matrix4x4 &m, const vector4 &v) {
+    vector4 operator*(const matrix4x4 &m, const vector4 &v) {
         vector4 x = v.x*m.i;
         vector4 y = v.y*m.j;
         vector4 z = v.z*m.k;
@@ -528,7 +528,7 @@ namespace smath {
         return x+y+z+w;
     }
 
-    inline matrix4x4 matrix4x4_from_perspective(float fovy, float aspect, float zNear, float zFar) {
+    matrix4x4 matrix4x4_from_perspective(float fovy, float aspect, float zNear, float zFar) {
         const float tanHalfFovy = tan(fovy/2.0f);
 
         matrix4x4 m = {0};
@@ -541,7 +541,7 @@ namespace smath {
         return m;
     }
 
-    inline matrix4x4 matrix4x4_from_translation(const vector3 &v) {
+    matrix4x4 matrix4x4_from_translation(const vector3 &v) {
         return matrix4x4{
             .i = {1, 0, 0, 0,},
             .j = {0, 1, 0, 0,},
