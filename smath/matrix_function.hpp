@@ -31,8 +31,6 @@ namespace smath {
 
     inline matrix2x2 matrix2x2_change_basis(const matrix2x2 &m, const matrix2x2 &b);
 
-    inline matrix2x2 matrix2x2_from_matrix2x2(const matrix2x2 &m);
-
     inline matrix2x2 matrix2x2_from_identity();
 
     inline bool matrix2x2_is_inverse(const matrix2x2 inverse, const matrix2x2 matrix, float epsilon = 0.001f);
