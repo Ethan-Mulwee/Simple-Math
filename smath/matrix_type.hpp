@@ -1,6 +1,7 @@
 #ifndef SMATH_MATRIX
 #define SMATH_MATRIX
 
+#include "vector_type.hpp"
 #include <cstddef>
 
 namespace smath {
@@ -17,19 +18,29 @@ namespace smath {
         }
     };
     struct matrix3x3 {
-        float data[3][3];
+        union {
+            struct {
+                vector3 i,j,k;
+            };
+            vector3 data[3];
+        };
         
-        inline float* operator[](const size_t i) {
+        inline vector3& operator[](const size_t i) {
             return data[i];
         }
 
-        inline const float* operator[](const size_t i) const {
+        inline const vector3& operator[](const size_t i) const {
             return data[i];
         }
     };
 
     struct matrix4x4 {
-        float data[4][4];
+        union {
+            struct {
+                vector4 i, j, k, l;
+            };
+            float data[4][4];
+        };
 
         inline float* operator[](const size_t i) {
             return data[i];

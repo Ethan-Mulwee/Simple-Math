@@ -245,4 +245,18 @@ int main() {
         std::cout << "Inverse Test: " << matrix4x4_is_inverse(inverseTransfrom, transform) << "\n\n";
     }
 
+    std::cout << "-------------------Memory Layout and Access----------------------- \n \n";
+
+    {
+        matrix3x3 a = {
+            2.4f, 1.2f, 0.5f,
+            0.1f, 0.0f, 4.6f,
+            104.0f, 20.0f, 0.15f
+        };
+        std::cout << a << "\n";
+        std::cout << "ihat: " << a.i << "\n";
+        std::cout << "jhat: " << a.j << "\n";
+        std::cout << "khat: " << a.k << "\n";
+    }
+
 }

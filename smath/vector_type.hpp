@@ -43,6 +43,14 @@ namespace smath {
             float factor = 1.0f/(*this).length();
             x *= factor; y *= factor; z *= factor;
         }
+
+        inline float& operator[](const size_t i) {
+            return data[i];
+        }
+
+        inline const float& operator[](const size_t i) const {
+            return data[i];
+        }
     };
 
     struct vector4 {
