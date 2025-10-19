@@ -7,22 +7,27 @@
 namespace smath {
 
     struct matrix2x2 {
-        float data[2][2];
+        union {
+            vector2 data[2];
+            struct {
+                vector2 i, j;
+            };
+        };
 
-        inline float* operator[](const size_t i) {
+        inline vector2& operator[](const size_t i) {
             return data[i];
         }
 
-        inline const float* operator[](const size_t i) const {
+        inline const vector2& operator[](const size_t i) const {
             return data[i];
         }
     };
     struct matrix3x3 {
         union {
+            vector3 data[3];
             struct {
                 vector3 i,j,k;
             };
-            vector3 data[3];
         };
         
         inline vector3& operator[](const size_t i) {
@@ -36,17 +41,17 @@ namespace smath {
 
     struct matrix4x4 {
         union {
+            vector4 data[4];
             struct {
                 vector4 i, j, k, l;
             };
-            float data[4][4];
         };
 
-        inline float* operator[](const size_t i) {
+        inline vector4& operator[](const size_t i) {
             return data[i];
         }
 
-        inline const float* operator[](const size_t i) const {
+        inline const vector4& operator[](const size_t i) const {
             return data[i];
         }
     };
