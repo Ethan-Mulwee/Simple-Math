@@ -7,7 +7,12 @@
 namespace smath {
 
     struct vector2 {
-        float x,y;
+        union {
+            struct {
+                float x,y;            
+            };
+            float data[2];
+        };
     
         inline float length() const {
             return sqrt(x*x+y*y);
@@ -20,6 +25,14 @@ namespace smath {
         void normalize() {
             float factor = 1.0f/(*this).length();
             x *= factor; y *= factor;
+        }
+
+        inline float& operator[](const size_t i) {
+            return data[i];
+        }
+
+        inline const float& operator[](const size_t i) const {
+            return data[i];
         }
     };
 
@@ -54,7 +67,12 @@ namespace smath {
     };
 
     struct vector4 {
-        float x, y, z, w;
+        union {
+            struct {
+                float x, y, z, w;
+            };
+            float data[4];
+        };
 
         inline float length() const {
             return sqrt(x*x+y*y+z*z+w*w);
@@ -67,6 +85,14 @@ namespace smath {
         void normalize() {
             float factor = 1.0f/(*this).length();
             x *= factor; y *= factor; z *= factor; w *= factor;
+        }
+
+        inline float& operator[](const size_t i) {
+            return data[i];
+        }
+
+        inline const float& operator[](const size_t i) const {
+            return data[i];
         }
     };
     
