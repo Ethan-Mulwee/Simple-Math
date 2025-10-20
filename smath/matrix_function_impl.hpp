@@ -203,7 +203,7 @@ namespace smath {
             jhat = cross(ihat, khat);
         }
         else {
-            jhat = vector3{-v.y, v.x, 0};
+            jhat = vector3{-ihat.y, ihat.x, 0};
             khat = cross(ihat, jhat);
         }
 
