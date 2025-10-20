@@ -1,10 +1,16 @@
 # Simple Math
-A C++ math library intended to limit the amount complexity in the code base, no templates, no constructors.
+A C++ math library intended to limit the amount complexity in the code base, no templates, no constructors. Matrix operations are column major for easy use with openGL.
 
 # Types
 All types are aggregate types intended to be intailized with intializer lists. Type names are treated like primitive types with lowcase names. For simplicity sake all types default to using floating point numbers.
 ```cpp
 vector3 v = {1,2,3};
+
+matrix3x3 m = {
+    .i = {1,0,0},
+    .j = {0,1,0},
+    .k = {0,0,1},
+};
 ```
 
 Currently implented types include
