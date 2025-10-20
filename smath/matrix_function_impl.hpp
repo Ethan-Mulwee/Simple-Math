@@ -260,9 +260,9 @@ namespace smath {
 
     matrix3x3 matrix3x3_from_matrix4x4(const matrix4x4 &m) {
         return matrix3x3{
-            m[0][0], m[1][0], m[2][0],
-            m[0][1], m[1][1], m[2][1],
-            m[0][2], m[1][2], m[2][2]
+            m[0][0], m[0][1], m[0][2],
+            m[1][0], m[1][1], m[1][2],
+            m[2][0], m[2][1], m[2][2]
         };
     }
 
@@ -379,9 +379,9 @@ namespace smath {
     matrix4x4 transpose(const matrix4x4 &m) {
         return {
             m[0][0], m[1][0], m[2][0], m[3][0],
-            m[0][1], m[1][1], m[2][1], m[3][1],
-            m[0][2], m[1][2], m[2][2], m[3][2],
-            m[0][3], m[1][3], m[2][3], m[3][3],
+            m[0][0], m[1][1], m[2][1], m[3][1],
+            m[0][0], m[1][2], m[2][2], m[3][2],
+            m[0][0], m[1][3], m[2][3], m[3][3],
         };
     }
 
@@ -599,10 +599,10 @@ namespace smath {
 
     matrix4x4 matrix4x4_from_transformation(const vector3 &translation, const matrix3x3 &rotation) {
         return matrix4x4 {
-            rotation[0][0], rotation[1][0], rotation[2][0], translation.x,
-            rotation[0][1], rotation[1][1], rotation[2][1], translation.y,
-            rotation[0][2], rotation[1][2], rotation[2][2], translation.z,
-            0,              0,              0,              1
+            rotation[0][0], rotation[0][1], rotation[0][2], 0,
+            rotation[1][0], rotation[1][1], rotation[1][2], 0,
+            rotation[2][0], rotation[2][1], rotation[2][2], 0,
+            translation.x,   translation.y,  translation.z,  1
         };
     }
 
@@ -618,7 +618,7 @@ namespace smath {
             .i = {m.i.x, m.i.y, m.i.z, 0.0f},
             .j = {m.j.x, m.j.y, m.j.z, 0.0f},
             .k = {m.k.x, m.k.y, m.k.z, 0.0f},
-            .l = {m.l.x, m.l.y, m.l.z, 0.0f},
+            .l = { 0.0f,  0.0f,  0.0f, 1.0f},
         };
     }
 
