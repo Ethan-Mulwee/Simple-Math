@@ -615,10 +615,10 @@ namespace smath {
 
     matrix4x4 matrix4x4_from_matrix3x3(const matrix3x3 &m) {
         return matrix4x4{
-            m[0][0], m[1][0], m[2][0], 0,
-            m[0][1], m[1][1], m[2][1], 0,
-            m[0][2], m[1][2], m[2][2], 0,
-                  0,       0,       0, 1
+            .i = {m.i.x, m.i.y, m.i.z, 0.0f},
+            .j = {m.j.x, m.j.y, m.j.z, 0.0f},
+            .k = {m.k.x, m.k.y, m.k.z, 0.0f},
+            .l = {m.l.x, m.l.y, m.l.z, 0.0f},
         };
     }
 
