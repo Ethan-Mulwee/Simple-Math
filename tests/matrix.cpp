@@ -258,6 +258,8 @@ int main() {
         std::cout << "ihat: " << a.i << "\n";
         std::cout << "jhat: " << a.j << "\n";
         std::cout << "khat: " << a.k << "\n";
+
+        std::cout << "transpose: \n" << transpose(a) << "\n";
     }
 
 }
