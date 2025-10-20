@@ -20,15 +20,15 @@ namespace smath {
 
     matrix2x2 operator*(const matrix2x2 &m, const float s) {
         return matrix2x2{
-            vector2{m[0][0] * s, m[1][0] * s},
-            vector2{m[0][1] * s, m[1][1] * s},
+            vector2{m[0][0] * s, m[0][1] * s},
+            vector2{m[1][0] * s, m[1][1] * s},
         };
     }
 
     matrix2x2 operator*(const float s, const matrix2x2 &m) {
         return matrix2x2{
-            vector2{m[0][0] * s, m[1][0] * s},
-            vector2{m[0][1] * s, m[1][1] * s},
+            vector2{m[0][0] * s, m[0][1] * s},
+            vector2{m[1][0] * s, m[1][1] * s},
         };
     }
 
