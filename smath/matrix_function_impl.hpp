@@ -587,6 +587,28 @@ namespace smath {
         };
     }
 
+    matrix4x4 matrix4x4_from_look(const vector3 &direction, const vector3 &center, const vector3 &up) {
+		vector3 const f(normalize(center - direction));
+		vector3 const s(normalize(cross(f, up)));
+		vector3 const u(cross(s, f));
+
+		matrix4x4 result{0};
+		result[0][0] = s.x;
+		result[1][0] = s.y;
+		result[2][0] = s.z;
+		result[0][1] = u.x;
+		result[1][1] = u.y;
+		result[2][1] = u.z;
+		result[0][2] =-f.x;
+		result[1][2] =-f.y;
+		result[2][2] =-f.z;
+		result[3][0] =-dot(s, direction);
+		result[3][1] =-dot(u, direction);
+		result[3][2] = dot(f, direction);
+        result[3][3] = 1.0f;
+		return result;
+    }
+
     inline matrix4x4 matrix4x4_from_scale(const float s) {
         return matrix4x4{
             s,    0.0f, 0.0f, 0.0f,

@@ -25,6 +25,10 @@ int main() {
     matrix4x4 orthoMatrix = matrix4x4_from_orthographic(-10,10,-10,10,-10,20);
     std::cout << orthoMatrix << "\n \n";
 
+    std::cout << "Look Matrix: DIRECTION=(normalize(-1,-1,-1)) CENTER = (0,0,0), UP = (0,1,0)"; 
+    matrix4x4 lookMatrix = matrix4x4_from_look(normalize(vector3{-1.0f, -1.0f, -1.0f}), {0.0f, 0.0f, 0.0f}, {0.0f, 1.0f, 0.0f});
+    std::cout << lookMatrix << "\n \n";
+
     std::cout << "-------------------Matrix3x3 Multiplication----------------------- \n \n";
 
     std::cout << "Matrix3x3 A: \n";

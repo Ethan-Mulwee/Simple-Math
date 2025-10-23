@@ -127,6 +127,8 @@ namespace smath {
 
     inline matrix4x4 matrix4x4_from_translation(const vector3 &v);
 
+    inline matrix4x4 matrix4x4_from_look(const vector3 &eye, const vector3 &center, const vector3 &up);
+
     inline matrix4x4 matrix4x4_from_scale(const float s);
 
     inline matrix4x4 matrix4x4_from_scale(const vector3 &s);
