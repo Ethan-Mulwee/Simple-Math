@@ -565,6 +565,19 @@ namespace smath {
         return m;
     }
 
+    matrix4x4 matrix4x4_from_orthographic(float left, float right, float bottom, float top, float zNear, float zFar) {
+        matrix4x4 result{0};
+        result[0][0] = 2.0f / (right - left);
+        result[1][1] = 2.0f / (top - bottom);
+        result[2][2] = - 2.0f / (zFar - zNear);
+        result[3][0] = - (right + left) / (right - left);
+        result[3][1] = - (top + bottom) / (top - bottom);
+        result[3][2] = - (zFar + zNear) / (zFar - zNear);
+        result[3][3] = 1.0f;
+
+        return result;
+    }
+
     inline matrix4x4 matrix4x4_from_translation(const vector3 &v) {
         return matrix4x4{
             .i = {1, 0, 0, 0,},

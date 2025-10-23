@@ -21,6 +21,10 @@ int main() {
     matrix4x4 translationMatrix = matrix4x4_from_translation(vector3{1,2,3});
     std::cout << translationMatrix << "\n \n";
 
+    std::cout << "Othrographic Matrix: LEFT=-10 RIGHT=10 BOTTOM=-10 TOP=10 NEAR=-10 FAR=20 \n";
+    matrix4x4 orthoMatrix = matrix4x4_from_orthographic(-10,10,-10,10,-10,20);
+    std::cout << orthoMatrix << "\n \n";
+
     std::cout << "-------------------Matrix3x3 Multiplication----------------------- \n \n";
 
     std::cout << "Matrix3x3 A: \n";
@@ -260,6 +264,9 @@ int main() {
         std::cout << "khat: " << a.k << "\n";
 
         std::cout << "transpose: \n" << transpose(a) << "\n";
+
+        matrix3x3 b = {0};
+        std::cout << b << "\n";
     }
 
 }

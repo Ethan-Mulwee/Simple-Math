@@ -123,6 +123,8 @@ namespace smath {
 
     inline matrix4x4 matrix4x4_from_perspective(float fovy, float aspect, float zNear, float zFar);
 
+    inline matrix4x4 matrix4x4_from_orthographic(float left, float right, float bottom, float top, float zNear, float zFar);
+
     inline matrix4x4 matrix4x4_from_translation(const vector3 &v);
 
     inline matrix4x4 matrix4x4_from_scale(const float s);
