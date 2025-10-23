@@ -565,7 +565,7 @@ namespace smath {
         return m;
     }
 
-    matrix4x4 matrix4x4_from_orthographic(float left, float right, float bottom, float top, float zNear, float zFar) {
+    inline matrix4x4 matrix4x4_from_orthographic(float left, float right, float bottom, float top, float zNear, float zFar) {
         matrix4x4 result{0};
         result[0][0] = 2.0f / (right - left);
         result[1][1] = 2.0f / (top - bottom);
@@ -587,7 +587,7 @@ namespace smath {
         };
     }
 
-    matrix4x4 matrix4x4_from_look(const vector3 &direction, const vector3 &center, const vector3 &up) {
+    inline matrix4x4 matrix4x4_from_look(const vector3 &direction, const vector3 &center, const vector3 &up) {
 		vector3 const f(normalize(center - direction));
 		vector3 const s(normalize(cross(f, up)));
 		vector3 const u(cross(s, f));
