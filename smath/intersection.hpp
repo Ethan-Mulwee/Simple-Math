@@ -12,12 +12,12 @@ namespace smath {
         float t_min = 0.0f;
         float t_max = 100000.0f;
 
-        vector3 obb_position = {transform[0][3], transform[1][3], transform[2][3]};
+        vector3 obb_position = transform.l.xyz;
 
         vector3 delta = obb_position - ray_origin;
 
         {
-            vector3 x_axis{transform[0][0], transform[1][0], transform[2][0]};
+            vector3 x_axis = transform.i.xyz;
             float e = dot(x_axis, delta);
             float f = dot(ray_direction, x_axis);
 
@@ -43,7 +43,7 @@ namespace smath {
         }
 
         {
-            vector3 y_axis{transform[0][1], transform[1][1], transform[2][1]};
+            vector3 y_axis = transform.j.xyz;
             float e = dot(y_axis, delta);
             float f = dot(ray_direction, y_axis);
 
@@ -66,7 +66,7 @@ namespace smath {
         }
 
         {
-            vector3 z_axis{transform[0][2], transform[1][2], transform[2][2]};
+            vector3 z_axis = transform.k.xyz;
             float e = dot(z_axis, delta);
             float f = dot(ray_direction, z_axis);
 

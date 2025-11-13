@@ -17,7 +17,7 @@ int main() {
     
         matrix4x4 obb_matrix = matrix4x4_from_transform({
             .translation = vector3{0.0f, 0.0f, 0.0f},
-            .rotation = quaternion{0.064f, 0.176f, 0.122f, 0.975f},
+            .rotation = quaternion{0.122f, 0.176f, 0.064f, 0.975f},
             .scale = vector3{1.0f, 1.0f, 1.0f}
         });
     
