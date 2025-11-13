@@ -12,6 +12,9 @@ namespace smath {
             struct {
                 vector2 i, j;
             };
+            struct {
+                vector2 x, y;
+            };
         };
 
         inline vector2& operator[](const size_t i) {
@@ -26,7 +29,10 @@ namespace smath {
         union {
             vector3 data[3];
             struct {
-                vector3 i,j,k;
+                vector3 i, j, k;
+            };
+            struct {
+                vector3 x, y, z;
             };
         };
         
@@ -44,6 +50,9 @@ namespace smath {
             vector4 data[4];
             struct {
                 vector4 i, j, k, l;
+            };
+            struct {
+                vector4 x, y, z, w;
             };
         };
 
