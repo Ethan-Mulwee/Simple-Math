@@ -230,6 +230,18 @@ int main() {
         std::cout << "Orthonormal: " << matrix3x3_is_orthonormal(m) << "\n\n";  
     }
 
+    std::cout << "-------------------Matrix3x3 from Vector3 Test----------------------- \n \n";
+
+    {
+        vector3 v = {1, 1, 1};
+        matrix3x3 m = matrix3x3_from_jhat(v);
+
+        std::cout << "Vector:" << v << "\n";
+        std::cout << "Matrix:" << m << "\n";
+        std::cout << "Determinant:" << determinant(m) << "\n";
+
+    }
+
     std::cout << "-------------------Transformation Matrix Inverse Test----------------------- \n \n";
 
     {
@@ -253,6 +265,7 @@ int main() {
         std::cout << "Inverse(Matrix): " << inverseTransfrom << "\n";
         std::cout << "Inverse Test: " << matrix4x4_is_inverse(inverseTransfrom, transform) << "\n\n";
     }
+
 
     std::cout << "-------------------Memory Layout and Access----------------------- \n \n";
 

@@ -199,11 +199,11 @@ namespace smath {
         vector3 ihat = normalize(v);
 
         if (std::abs(ihat.y) < std::abs(ihat.z)) {
-            khat = vector3{-ihat.z, 0, ihat.x};
+            khat = normalize(vector3{-ihat.z, 0, ihat.x});
             jhat = cross(ihat, khat);
         }
         else {
-            jhat = vector3{-ihat.y, ihat.x, 0};
+            jhat = normalize(vector3{-ihat.y, ihat.x, 0});
             khat = cross(ihat, jhat);
         }
 
@@ -216,11 +216,11 @@ namespace smath {
         vector3 jhat = normalize(v);
 
         if (std::abs(jhat.y) < std::abs(jhat.z)) {
-            khat = vector3{-jhat.z, 0, jhat.x};
+            khat = normalize(vector3{-jhat.z, 0, jhat.x});
             ihat = cross(khat, jhat);
         }
         else {
-            ihat = vector3{-jhat.y, jhat.x, 0};
+            ihat = normalize(vector3{-jhat.y, jhat.x, 0});
             khat = cross(ihat, jhat);
         }
 
@@ -233,11 +233,11 @@ namespace smath {
         vector3 khat = normalize(v);
 
         if (std::abs(khat.y) < std::abs(khat.z)) {
-            jhat = vector3{-khat.z, 0, khat.x};
+            jhat = normalize(vector3{-khat.z, 0, khat.x});
             ihat = cross(khat, jhat);
         }
         else {
-            ihat = vector3{-khat.y, khat.x, 0};
+            ihat = normalize(vector3{-khat.y, khat.x, 0});
             jhat = cross(khat, ihat);
         }
 
@@ -319,7 +319,7 @@ namespace smath {
         // }
 
         // return true;
-        return matrix3x3_is_inverse(transpose(m), m);
+        return matrix3x3_is_inverse(transpose(m), m, epsilon);
     }
 
     inline bool matrix3x3_is_orthogonal(const matrix3x3 &m, float epsilon) {
